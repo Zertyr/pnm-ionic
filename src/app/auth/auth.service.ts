@@ -1,7 +1,7 @@
 import { Injectable } from  '@angular/core';
 import { HttpClient } from  '@angular/common/http';
-import { tap } from  'rxjs/operators';
-import { Observable, BehaviorSubject } from  'rxjs';
+import { catchError, tap } from  'rxjs/operators';
+import { Observable, BehaviorSubject, throwError } from  'rxjs';
 
 import { Preferences } from '@capacitor/preferences';
 import { User } from  './user';
@@ -26,28 +26,36 @@ export class AuthService {
 
   register(user: User): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user).pipe(
-      tap(async (res:  AuthResponse ) => {
+      catchError(error => {
+        console.log('info');
+        
+        if (error.status != 200) {
+        console.log('info');
 
-        if (res) {
-          await Preferences.set(
-            {
-              key: "ACCESS_TOKEN",
-              value: res.access_token,
-            });
-          await Preferences.set(
-            {
-              key:"EXPIRES_IN",
-              value: res.expired_at.toString(),
-            });
-            await Preferences.set(
-              {
-                key:"USER",
-                value: JSON.stringify(res.user),
-              });
-          this.authSubject.next(true);
+          // handle error
+          return throwError(error);
         }
       })
 
+        //si auto login afterregister
+        // if (res) {
+        //   await Preferences.set(
+        //     {
+        //       key: "ACCESS_TOKEN",
+        //       value: res.access_token,
+        //     });
+        //   await Preferences.set(
+        //     {
+        //       key:"EXPIRES_IN",
+        //       value: res.expired_at.toString(),
+        //     });
+        //     await Preferences.set(
+        //       {
+        //         key:"USER",
+        //         value: JSON.stringify(res.user),
+        //       });
+        //   this.authSubject.next(true);
+        //}
     );
   }
 
@@ -55,6 +63,11 @@ export class AuthService {
     user.device_name = "deviceName";
     return this.httpClient.post(`${this.AUTH_SERVER_ADDRESS}/login`, user)
     .pipe(
+      catchError(error => {
+        if (error.status != 200) {
+          return throwError(error);
+        }
+      }),
       tap(async (res:AuthResponse) => {
 
         if (res.user) {
@@ -77,7 +90,6 @@ export class AuthService {
             });
           this.authSubject.next(true);
           this.router.navigateByUrl('/tabs', {replaceUrl:true});
-
         }
       })
     );
