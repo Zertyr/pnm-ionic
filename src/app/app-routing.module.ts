@@ -16,6 +16,10 @@ const routes: Routes = [
     canLoad: [IntroGuard, AutoLoginGuard] // Il check si il doit montrer l'introduction ou pas 
   },
   {
+    path: 'lost-password',
+    loadChildren: () => import('./auth/lost-password/lost-password.module').then( m => m.LostPasswordPageModule)
+  },
+  {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
     canLoad: [AuthGuard]
@@ -29,6 +33,8 @@ const routes: Routes = [
     redirectTo: '/login',
     pathMatch: 'full'
   },
+
+
 
 ];
 @NgModule({

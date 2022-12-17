@@ -32,3 +32,10 @@ a{
         width: 50%;
         margin-left: 25%;
     }
+
+    .help {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
