@@ -1,29 +1,24 @@
 <ion-content >
-  <ion-slides pager="true" >
-    <!-- Slide 1 -->
-    <ion-slide>
+  <swiper [config]="config" class="swiper-container">
+    <ng-template swiperSlide>
       <ion-text color="light">
         <img src="..\..\assets\images\pnmLogo.png">
         <div class="container">
           <h1>Hey Pssst !</h1>
           <p>Bienvenue sur la Pack'N Move !</p>
         </div>
-        <ion-button (click)="next()" fill="outline" color="light">Next</ion-button>
       </ion-text>
-    </ion-slide>
-    <!-- Slide 2 -->
-    <ion-slide>
+    </ng-template>
+    <ng-template swiperSlide>
       <ion-text color="light">
         <img src="..\..\assets\images\pnmLogo.png">
         <div class="container">
           <h1>Facile</h1>
           <p>Avec cette application vous pourrez gérer les cartons de votre déménagement sans prise de tête</p>
         </div>
-        <ion-button (click)="next()" fill="outline" color="light">Next</ion-button>
       </ion-text>
-    </ion-slide>
-    <!-- Slide 3 -->
-    <ion-slide>
+    </ng-template>
+    <ng-template swiperSlide>
       <ion-text color="light">
         <img src="..\..\assets\images\pnmLogo.png">
         <div class="container">
@@ -32,6 +27,6 @@
         </div>
         <ion-button (click)="start()" fill="outline" color="light">Start</ion-button>
       </ion-text>
-    </ion-slide>
-  </ion-slides>
+    </ng-template>
+  </swiper>
 </ion-content>

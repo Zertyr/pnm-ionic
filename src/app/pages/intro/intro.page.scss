@@ -1,7 +1,20 @@
+@import '~swiper/scss';
+@import '~swiper/scss/autoplay';
+@import '~swiper/scss/keyboard';
+@import '~swiper/scss/pagination';
+@import '~swiper/scss/scrollbar';
+@import '~swiper/scss/zoom';
+@import '~@ionic/angular/css/ionic-swiper';
+
 ion-content {
     --background: #3880ff;
 }
  
+
+ion-footer {
+    background-color: #3880ff;
+}
+
 ion-slides {
     height: 100%;
     --bullet-background-active: #fff;
@@ -36,3 +49,8 @@ img{
     width: 90%;
     padding-bottom: 5vh;
     }
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
