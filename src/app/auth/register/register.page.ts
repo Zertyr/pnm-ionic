@@ -27,7 +27,7 @@ export class RegisterPage implements OnInit {
         error: async (error: any) => { 
           const alert = await this.alertController.create({
             header: 'Error',
-            message: 'L\'email est déjà utilisé !',
+            message: 'Email already used',
             buttons: ['OK'],
           });
       
@@ -36,7 +36,7 @@ export class RegisterPage implements OnInit {
         complete: async () => { 
           const alert = await this.alertController.create({
             header: 'Succès',
-            message: 'Le compte a était créé avec succès',
+            message: 'Account created !',
             buttons: ['OK'],
           });
       

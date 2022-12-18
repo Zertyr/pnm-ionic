@@ -142,6 +142,22 @@ export class AuthService {
     this.tokenExpire = await (await Preferences.get({key: 'EXPIRES_IN'})).value;
     this.tokenExpire = await (await Preferences.get({key: 'EXPIRES_IN'})).value;
   }
+
+  
+  resetPassword(email: string): Observable<any> {
+    return this.httpClient.post<string>(`${this.AUTH_SERVER_ADDRESS}/password/forgot-password`, email).pipe(
+      catchError(error => {
+        console.log('info');
+        
+        if (error.status != 200) {
+        console.log('info');
+
+          // handle error
+          return throwError(error);
+        }
+      })
+    );
+  }
 }
 
 
