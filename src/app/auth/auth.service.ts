@@ -27,35 +27,12 @@ export class AuthService {
   register(user: User): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user).pipe(
       catchError(error => {
-        console.log('info');
         
         if (error.status != 200) {
-        console.log('info');
-
           // handle error
           return throwError(error);
         }
       })
-
-        //si auto login afterregister
-        // if (res) {
-        //   await Preferences.set(
-        //     {
-        //       key: "ACCESS_TOKEN",
-        //       value: res.access_token,
-        //     });
-        //   await Preferences.set(
-        //     {
-        //       key:"EXPIRES_IN",
-        //       value: res.expired_at.toString(),
-        //     });
-        //     await Preferences.set(
-        //       {
-        //         key:"USER",
-        //         value: JSON.stringify(res.user),
-        //       });
-        //   this.authSubject.next(true);
-        //}
     );
   }
 
@@ -103,26 +80,8 @@ export class AuthService {
 
   isLoggedIn() {
     this.getDataStorage().then(()=>{
-      console.log('userStorage : ');
-      console.log(this.userStorage);
-
-      console.log('expired_at : ');
-
-      console.log(this.tokenExpire);
       this.tokenExpire = new Date(this.tokenExpire)
       let dateNow = new Date();
-      console.log('dateNow');
-      
-      console.log(dateNow);
-
-      console.log('tokenExpire');
-      console.log(this.tokenExpire);
-      
-      console.log('dateNow.getTime() < this.tokenExpire.getTime()');
-      console.log(dateNow.getTime() < this.tokenExpire.getTime());
-      
-      
-      
       if(this.userStorage != null && dateNow.getTime() < this.tokenExpire.getTime()){
         this.authSubject.next(true);
 
@@ -147,11 +106,7 @@ export class AuthService {
   resetPassword(email: string): Observable<any> {
     return this.httpClient.post<string>(`${this.AUTH_SERVER_ADDRESS}/password/forgot-password`, email).pipe(
       catchError(error => {
-        console.log('info');
-        
         if (error.status != 200) {
-        console.log('info');
-
           // handle error
           return throwError(error);
         }

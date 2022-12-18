@@ -7,10 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { IntroPageRoutingModule } from './intro-routing.module';
 
 import { IntroPage } from './intro.page';
-
+import { SwiperModule } from 'swiper/angular';
 @NgModule({
   imports: [
     CommonModule,
+    SwiperModule,
     FormsModule,
     IonicModule,
     IntroPageRoutingModule

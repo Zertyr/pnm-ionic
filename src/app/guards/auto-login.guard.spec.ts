@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AutoLoginGuard } from './auto-login.guard';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AutoLoginGuard', () => {
   let guard: AutoLoginGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    });
     guard = TestBed.inject(AutoLoginGuard);
   });
 
