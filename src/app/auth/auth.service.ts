@@ -19,15 +19,15 @@ export class AuthService {
   userStorage:User;
   tokenExpire:any;
 
-  constructor(private  httpClient:  HttpClient, private router: Router) { 
-   
+  constructor(private  httpClient:  HttpClient, private router: Router) {
+
     this.isLoggedIn;
   }
 
   register(user: User): Observable<AuthResponse> {
     return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/register`, user).pipe(
       catchError(error => {
-        
+
         if (error.status != 200) {
           // handle error
           return throwError(error);
@@ -49,7 +49,7 @@ export class AuthService {
 
         if (res.user) {
           console.log("res : " + JSON.stringify(res));
-          
+
           await Preferences.set(
             {
               key: "ACCESS_TOKEN",
@@ -102,7 +102,7 @@ export class AuthService {
     this.tokenExpire = await (await Preferences.get({key: 'EXPIRES_IN'})).value;
   }
 
-  
+
   resetPassword(email: string): Observable<any> {
     return this.httpClient.post<string>(`${this.AUTH_SERVER_ADDRESS}/password/forgot-password`, email).pipe(
       catchError(error => {

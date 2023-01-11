@@ -8,12 +8,12 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./auth/login/login.module').then( m => m.LoginPageModule),
-    canLoad: [IntroGuard, AutoLoginGuard] // Il check si il doit montrer l'introduction ou pas 
+    canLoad: [IntroGuard, AutoLoginGuard] // Il check si il doit montrer l'introduction ou pas
   },
   {
     path: 'register',
     loadChildren: () => import('./auth/register/register.module').then( m => m.RegisterPageModule),
-    canLoad: [IntroGuard, AutoLoginGuard] // Il check si il doit montrer l'introduction ou pas 
+    canLoad: [IntroGuard, AutoLoginGuard] // Il check si il doit montrer l'introduction ou pas
   },
   {
     path: 'lost-password',
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    loadChildren: () => import('./bottom-nav/tabs/tabs.module').then(m => m.TabsPageModule),
     canLoad: [AuthGuard]
   },
   {
