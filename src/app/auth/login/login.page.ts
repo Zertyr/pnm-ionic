@@ -24,13 +24,25 @@ export class LoginPage implements OnInit {
 
        },
       error: async (error: any) => { 
-        const alert = await this.alertController.create({
-          header: 'Error',
-          message: 'Informations incorrect',
-          buttons: ['OK'],
-        });
-    
+        if(error.status != 500){
+          const alert = await this.alertController.create({
+            header: 'Error',
+            message: error.error.message,
+            buttons: ['OK'],
+          });
         return alert.present();
+
+        } else {
+          const alert = await this.alertController.create({
+            header: 'Error',
+            message: 'server error',
+            buttons: ['OK'],
+          });
+        return alert.present();
+        }
+        
+
+    
       },
       complete:  () => { 
       }
