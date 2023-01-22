@@ -4,7 +4,7 @@
 @import '~swiper/scss/pagination';
 @import '~swiper/scss/scrollbar';
 @import '~swiper/scss/zoom';
-@import '~@ionic/angular/css/ionic-swiper';
+@import './node_modules/@ionic/angular/css/ionic-swiper';
 
 ion-content {
     --background: #3880ff;
