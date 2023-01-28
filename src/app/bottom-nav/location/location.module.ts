@@ -6,7 +6,7 @@ import { LocationPage } from './location.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import { LocationPageRoutingModule } from './location-routing.module';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
   imports: [
     IonicModule,
@@ -15,6 +15,7 @@ import { LocationPageRoutingModule } from './location-routing.module';
     ExploreContainerComponentModule,
     LocationPageRoutingModule
   ],
-  declarations: [LocationPage]
+  declarations: [LocationPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LocationPageModule {}
