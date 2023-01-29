@@ -6,10 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
 import { PopoverController } from '@ionic/angular';
 
-
-
-const apiKey = 'AIzaSyDsKgB1J3eZdEwP5oyorhnLbhfO9OZucQU';
-
 @Component({
   selector: 'app-location',
   templateUrl: 'location.page.html',
@@ -39,7 +35,7 @@ export class LocationPage {
 
     this.newMap = await GoogleMap.create({
       id: 'my-map',
-      apiKey: apiKey,
+      apiKey: environment.YOUR_API_KEY,
       element: this.mapRef.nativeElement,
       forceCreate: true,
       config: {
