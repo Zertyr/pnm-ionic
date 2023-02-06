@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uriAPI: 'https://c128-2a01-cb0c-2ff-3a00-1d55-ad2c-4d12-79a9.eu.ngrok.io/api',
+  uriAPI: 'http://localhost:8000/api',
   YOUR_API_KEY: 'GOOGLE_API_KEY'
 };
 
