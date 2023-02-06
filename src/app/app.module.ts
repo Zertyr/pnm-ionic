@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from  './auth/auth.module';
 import { LoginPageModule } from './auth/login/login.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,5 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

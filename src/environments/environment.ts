@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  uriAPI: 'https://0f28-2a01-cb0c-2ff-3a00-8056-cbb5-5ee6-54b0.eu.ngrok.io/api',
+  uriAPI: 'https://c128-2a01-cb0c-2ff-3a00-1d55-ad2c-4d12-79a9.eu.ngrok.io/api',
+  YOUR_API_KEY: 'GOOGLE_API_KEY'
 };
 
 /*

@@ -1,0 +1,16 @@
+#map {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border: red solid 1px;
+}
+
+ion-content {
+    --background: transparent;
+  }
+
+.popover {
+    background-color: aliceblue;
+    border-radius: 10px;
+    text-align: center;
+}
