@@ -29,10 +29,15 @@ const routes: Routes = [
     loadChildren: () => import('./pages/intro/intro.module').then( m => m.IntroPageModule)
   },
   {
+    path: 'vehicle-informations',
+    loadChildren: () => import('./pages/vehicle-informations/vehicle-informations.module').then( m => m.VehicleInformationsPageModule)
+  },
+  {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full'
   },
+
 
 
 

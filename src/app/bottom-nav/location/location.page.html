@@ -1,6 +1,9 @@
-
-
 <ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-button [routerLink]="['/vehicle-informations']">
+      <ion-icon name="information-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
   <!-- <capacitor-google-map id="map" #map></capacitor-google-map>
   <ion-popover #popover  [isOpen]="isPopoverOpen" (didDismiss)="isPopoverOpen = false">
     <ng-template>
