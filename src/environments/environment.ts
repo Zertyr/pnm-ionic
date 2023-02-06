@@ -8,6 +8,8 @@ export const environment = {
   YOUR_API_KEY: 'GOOGLE_API_KEY'
 };
 
+export const INVENTORY_URL = '/inventory';
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

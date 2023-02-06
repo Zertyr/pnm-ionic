@@ -15,13 +15,13 @@ import { Router } from '@angular/router';
 
 export class AuthService {
   AUTH_SERVER_ADDRESS:  string  =  environment.uriAPI;
-  authSubject  =  new  BehaviorSubject(false);
+  authSubject: BehaviorSubject<boolean>  =  new  BehaviorSubject<boolean>(null);
   userStorage:User;
   tokenExpire:any;
 
   constructor(private  httpClient:  HttpClient, private router: Router) {
 
-    this.isLoggedIn;
+    this.isLoggedIn();
   }
 
   register(user: User): Observable<AuthResponse> {
@@ -78,19 +78,24 @@ export class AuthService {
     this.authSubject.next(false);
   }
 
-  isLoggedIn() {
-    this.getDataStorage().then(()=>{
-      this.tokenExpire = new Date(this.tokenExpire)
-      let dateNow = new Date();
-      if(this.userStorage != null && dateNow.getTime() < this.tokenExpire.getTime()){
-        this.authSubject.next(true);
+  async isLoggedIn() {
+    await this.getDataStorage().then(()=>{
+ 
+      //TimeStamp PHP du coup on doit faire x1000 pour avoir le même genre de valeur que en 
+      this.tokenExpire = this.tokenExpire * 1000;
+      let dateNow =  Date.now();
 
-        return this.authSubject.asObservable();
+      //Si on a les données d'un utilisateur Et que le token n'est pas expiré ALORS on peut mettre la valeur en true et permettre l'auto-login
+      if(this.userStorage != null && dateNow < this.tokenExpire){
+        
+        return this.authSubject.next(true);
 
       } else {
-        this.authSubject.next(false);
-        Preferences.clear();
-      return this.authSubject.asObservable();
+        //Le token est expiré et on supprime les données stocké
+         Preferences.remove({key:"ACCESS_TOKEN"});
+         Preferences.remove({key:"EXPIRES_IN"});
+         Preferences.remove({key:"USER"});
+        return this.authSubject.next(false);
       }
     }
     )

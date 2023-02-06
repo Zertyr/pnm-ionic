@@ -12,11 +12,15 @@ export class AutoLoginGuard implements CanLoad {
 
   }
   canLoad(): Observable<boolean> {
-    return this.authService.authSubject.pipe(
+    console.log(this.authService.authSubject);
+    
+    return this.authService.authSubject.pipe(      
       filter(val => val !== null),
       take(1),
       map(isAuthenticated => {
+        
         console.log('Found previous token, automatic login');
+        console.log(isAuthenticated);
         if(isAuthenticated){
           this.router.navigateByUrl('/tabs', {replaceUrl:true});
         }else {
