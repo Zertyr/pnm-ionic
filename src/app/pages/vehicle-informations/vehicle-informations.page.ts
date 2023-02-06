@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IVehicles } from 'src/app/models/vehicles.model';
+import { VehiclesService } from 'src/app/services/vehicles.service';
 
 @Component({
   selector: 'app-vehicle-informations',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vehicle-informations.page.scss'],
 })
 export class VehicleInformationsPage implements OnInit {
+  public vehicles: any;
 
-  constructor() { }
+  constructor(public vehiclesService: VehiclesService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.dataVehicles();
+
   }
-
+    dataVehicles = () => {
+     this.vehiclesService.getVehicles().then(value => {
+       value.subscribe(value1 => {
+         this.vehicles = value1
+         console.log(this.vehicles)
+       })
+    })
+  }
 }

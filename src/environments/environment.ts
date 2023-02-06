@@ -9,6 +9,7 @@ export const environment = {
 };
 
 export const INVENTORY_URL = '/inventory';
+export const VEHICLES_URL = '/vehicle';
 
 /*
  * For easier debugging in development mode, you can import the following file
