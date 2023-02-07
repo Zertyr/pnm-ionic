@@ -8,7 +8,8 @@ export const environment = {
   YOUR_API_KEY: 'GOOGLE_API_KEY'
 };
 
-export const INVENTORY_URL = '/inventory';
+export const INVENTORY_BY_USER_URL = '/inventory/byuser';
+export const INVENTORY_ITEM_URL = '/inventory/items'
 
 /*
  * For easier debugging in development mode, you can import the following file
