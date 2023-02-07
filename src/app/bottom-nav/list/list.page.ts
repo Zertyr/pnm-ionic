@@ -11,14 +11,14 @@ export class ListPage implements OnInit{
 
   inventoryList: any = []
 
-  constructor(private inventoryService: InventoryService, private route: Router) {}
+  constructor(private inventoryService: InventoryService, private router: Router) {}
 
   ngOnInit(): void {
     this.dataInventory();
 
   }
     dataInventory = () => {
-     this.inventoryService.getLoggedInUser().then(value => {
+     this.inventoryService.getInventoriesByUserID().then(value => {
        value.subscribe(data => {
 
          this.inventoryList = data
@@ -27,7 +27,7 @@ export class ListPage implements OnInit{
     })
   }
 
-  goAnOtherPage() {
-    this.route.navigate(['/tabs/location']);
+  gotoInventoryBox(item: any) {
+    this.router.navigate(['/tabs/list/listbox'],{queryParams: {id: item.id, label: item.label}});
   }
 }

@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: ListPage,
+  },
+  {
+    path: 'listbox',
+    loadChildren: () => import('./listbox/listbox.module').then( m => m.ListboxPageModule)
   }
 ];
 
