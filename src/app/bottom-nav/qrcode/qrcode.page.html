@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      QrCode
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">QrCode</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="QrCode page"></app-explore-container>
+    <ion-button (click)="askUser()" [hidden]="!scannerButton"      expand="block" 
+    class="ion-margin" >
+      Scanner
+    </ion-button>
+    <ion-button       expand="block" 
+    class="ion-margin" (click)="stopScan()" [hidden]="!scanActive">
+      Close
+    </ion-button>
+  
+    <div *ngIf="scannedResult">
+      <h2 style="text-align: center;"> {{scannedResult[0]?.boxName}} </h2>
+      <ion-list  *ngFor="let item of scannedResult" >
+        <ion-item>
+          {{item?.itemName}} | {{item?.quantity}}
+        </ion-item>
+      </ion-list>
+    </div>
 </ion-content>
+<ion-footer >
+
+</ion-footer>
