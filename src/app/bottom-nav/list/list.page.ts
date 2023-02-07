@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {InventoryService} from "../../services/inventory.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list',
@@ -8,9 +9,9 @@ import {InventoryService} from "../../services/inventory.service";
 })
 export class ListPage implements OnInit{
 
-  setInventoryListList: any = []
+  inventoryList: any = []
 
-  constructor(private inventoryService: InventoryService) {}
+  constructor(private inventoryService: InventoryService, private route: Router) {}
 
   ngOnInit(): void {
     this.dataInventory();
@@ -18,12 +19,15 @@ export class ListPage implements OnInit{
   }
     dataInventory = () => {
      this.inventoryService.getLoggedInUser().then(value => {
-       value.subscribe(value1 => {
+       value.subscribe(data => {
 
-         this.setInventoryListList = value1
-         console.log(this.setInventoryListList)
+         this.inventoryList = data
+         console.log(this.inventoryList)
        })
     })
   }
 
+  goAnOtherPage() {
+    this.route.navigate(['/tabs/location']);
+  }
 }
