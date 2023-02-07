@@ -1,17 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      List
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">List</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Page des listes"></app-explore-container>
+  <ion-list  *ngFor="let item of inventoryList" (click)="gotoInventoryBox(item)">
+    <ion-item>
+      {{item.label}}
+
+
+    </ion-item>
+  </ion-list>
+
 </ion-content>
