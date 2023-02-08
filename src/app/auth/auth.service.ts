@@ -75,7 +75,10 @@ export class AuthService {
   async logout() {
     await Preferences.remove({key:"ACCESS_TOKEN"});
     await Preferences.remove({key:"EXPIRES_IN"});
+    await Preferences.remove({key:"USER"});
     this.authSubject.next(false);
+    this.router.navigateByUrl('/', {replaceUrl:true});
+    
   }
 
   async isLoggedIn() {
