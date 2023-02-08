@@ -2,3 +2,13 @@ body.scanner-active {
         --background: transparent;
         --ion-background-color: transparent;
   }
+
+  .qrCode {
+    display: flex;
+    justify-content: center;
+  }
+
+  .borderBottom {
+    border-bottom: 1px solid gray;
+    text-align: center;
+  }

@@ -9,8 +9,13 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 export class QrCodePage implements OnInit, OnDestroy {
 
+  //visibility of the button scanner
   scannerButton: boolean = true;
+
+  //visibility of the button close
   scanActive: boolean = false;
+
+  //visibility of the result
   scannedResult: any;
 
   constructor() {

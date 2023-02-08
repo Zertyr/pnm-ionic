@@ -1,25 +1,44 @@
-
-
 <ion-content [fullscreen]="true">
+  <ion-button
+    (click)="askUser()"
+    [hidden]="!scannerButton"
+    expand="block"
+    class="ion-margin"
+  >
+    Scanner
+  </ion-button>
+  <ion-button
+    expand="block"
+    class="ion-margin"
+    (click)="stopScan()"
+    [hidden]="!scanActive"
+  >
+    Close
+  </ion-button>
 
-    <ion-button (click)="askUser()" [hidden]="!scannerButton"      expand="block" 
-    class="ion-margin" >
-      Scanner
-    </ion-button>
-    <ion-button       expand="block" 
-    class="ion-margin" (click)="stopScan()" [hidden]="!scanActive">
-      Close
-    </ion-button>
-  
-    <div *ngIf="scannedResult">
-      <h2 style="text-align: center;"> {{scannedResult[0]?.boxName}} </h2>
-      <ion-list  *ngFor="let item of scannedResult" >
-        <ion-item>
-          {{item?.itemName}} | {{item?.quantity}}
-        </ion-item>
-      </ion-list>
-    </div>
+  <div class="qrCode">
+    <qrcode
+    [hidden]="!scannerButton"
+    [qrdata]="'Pack\'N Move'"
+    [width]="256"
+    [errorCorrectionLevel]="'M'"
+    ></qrcode>
+  </div>
+
+  <div *ngIf="scannedResult"  [hidden]="scanActive">
+    <h2 style="text-align: center">{{scannedResult[0]?.boxName}}</h2>
+    <ion-grid>
+
+      <ion-row class="borderBottom">
+        <ion-col>Name</ion-col>
+        <ion-col>Quantity</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of scannedResult" class="borderBottom">
+        <ion-col>{{item?.itemName}}</ion-col>
+        <ion-col>{{item?.quantity}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
-<ion-footer >
-
-</ion-footer>
+<ion-footer> </ion-footer>
