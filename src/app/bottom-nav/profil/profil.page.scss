@@ -1,0 +1,33 @@
+
+ion-button{
+    --background: #062f77;
+}
+a{
+    color: #fff;
+}
+
+.centerTitle {
+    text-align: center;
+}
+.avatarBox{
+    display: flex;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.logoutDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.pictureProfil{
+    width: 150px;
+    height: 150px;
+}

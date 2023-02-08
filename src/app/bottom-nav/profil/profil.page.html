@@ -1,17 +1,59 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Profil
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-title size="large">Profil</ion-title>
+      <ion-title class="centerTitle" size="large" style="text-align: center;">Profil</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Profil page"></app-explore-container>
+<ion-content [fullscreen]="true">
+  <!-- le deuxième header permet un comportement différent il est en gros sans bordure puis quand on slide il remonte dans la barre-->
+  <ion-header collapse="condense">
+    <ion-toolbar >
+      <ion-title class="centerTitle" size="large">Profil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container" *ngIf="this.user != undefined">
+    <!-- Image de profil -->
+    <div class="avatarBox">
+      <ion-avatar class="pictureProfil">
+        <img src="../../../assets/images/profile.jpg" alt="Your photo" class="pictureProfil"/>
+      </ion-avatar>
+    </div>
+
+    <!-- Partie avec les information de l'utilisateur -->
+    <ion-item lines="full">
+      <ion-label ><b>Name : </b>
+        <ion-text>{{this.user.name}}</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label><b>Firstname : </b>
+      <ion-text>{{this.user.firstname}}</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label><b>Lastname : </b>
+        <ion-text>{{this.user.lastname}}</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label><b>Email : </b>
+        <ion-text>{{this.user.email}}</ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+
+        <!--emplacement des boutons -->
+        <div class="logoutDiv">
+          <ion-button expand="shape">Update informations</ion-button>
+          <ion-button expand="shape">Update password</ion-button>
+          <ion-button expand="shape" (click)="logout()" class="logout">Logout</ion-button>
+        </div>
+
+      </ion-col>
+    </ion-row>
+  </div>
+
 </ion-content>

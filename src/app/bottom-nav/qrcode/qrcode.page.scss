@@ -12,3 +12,20 @@ body.scanner-active {
     border-bottom: 1px solid gray;
     text-align: center;
   }
+
+  
+ion-button{
+    --background: #062f77;
+}
+
+a{
+    color: #fff;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
