@@ -12,10 +12,12 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-		<key>NSLocationAlwaysUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We want to track you</string>
-		<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your current location</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To be able to scan barcodes</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>

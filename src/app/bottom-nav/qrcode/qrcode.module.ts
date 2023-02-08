@@ -6,6 +6,7 @@ import {QrCodePage} from './qrcode.page';
 import { ExploreContainerComponentModule } from '../../explore-container/explore-container.module';
 
 import {QrCodePageRoutingModule} from './qrcode-routing.module';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {QrCodePageRoutingModule} from './qrcode-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    QrCodePageRoutingModule
+    QrCodePageRoutingModule,
+    QRCodeModule
   ],
   declarations: [QrCodePage]
 })

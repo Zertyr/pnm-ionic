@@ -19,3 +19,4 @@ import { TabsPage } from './tabs.page';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class TabsPageModule {}
+
