@@ -7,7 +7,14 @@
 
 <ion-content>
 
-  <ion-list  *ngFor="let item of inventoryList">
+  <div padding class="forms">
+    <ion-item>
+      <ion-input [clearOnEdit]=true  [clearInput]=true [(ngModel)]="newItemName" placeholder="Nom objet"></ion-input>
+      <ion-button (click)="createNewItem()">Ajouter</ion-button>
+    </ion-item>
+  </div>
+
+  <ion-list  *ngFor="let item of itemList">
     <ion-item>
       {{item.label}}
     </ion-item>
