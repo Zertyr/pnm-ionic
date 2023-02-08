@@ -1,6 +1,17 @@
 
+<ion-header>
 
+  <ion-title class="title"> Mes Listes </ion-title>
+
+</ion-header>
 <ion-content [fullscreen]="true">
+
+  <div padding class="forms">
+    <ion-item>
+      <ion-input [clearOnEdit]=true  [clearInput]=true [(ngModel)]="newListName" placeholder="Nom liste"></ion-input>
+      <ion-button (click)="createNewInventory()">Ajouter</ion-button>
+    </ion-item>
+  </div>
 
   <ion-list  *ngFor="let item of inventoryList" (click)="gotoInventoryBox(item)">
     <ion-item>

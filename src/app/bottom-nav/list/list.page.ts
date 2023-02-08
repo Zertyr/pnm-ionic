@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 export class ListPage implements OnInit{
 
   inventoryList: any = []
+  newListName: string ="";
 
   constructor(private inventoryService: InventoryService, private router: Router) {}
 
@@ -27,7 +28,32 @@ export class ListPage implements OnInit{
     })
   }
 
+
+
   gotoInventoryBox(item: any) {
     this.router.navigate(['/tabs/list/listbox'],{queryParams: {id: item.id, label: item.label}});
+  }
+
+  /**
+   *Create a new Inventory
+   * Call createNewInventory, get the lastInventory created (new one), add it to the current list of inventory
+   */
+  async createNewInventory() {
+    let lastInventoryCreated ;
+
+    if (this.newListName.length < 1) {
+      alert("Le nom de la pièce est trop court (1 caractère minimum)")
+      return;
+    }
+    this.inventoryService.createNewInventory(this.newListName).then(() => {
+      this.inventoryService.getLastInventoryByUserID().then(data => {
+        data.subscribe(value => {
+          lastInventoryCreated = value;
+          this.inventoryList.push(lastInventoryCreated);
+        })
+      })
+    }).catch((error) => {
+      console.log("Error : ",error.message)
+    });
   }
 }
