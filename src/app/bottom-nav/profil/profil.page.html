@@ -6,20 +6,22 @@
   </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- le deuxième header permet un comportement différent il est en gros sans bordure puis quand on slide il remonte dans la barre-->
   <ion-header collapse="condense">
     <ion-toolbar >
       <ion-title class="centerTitle" size="large">Profil</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div class="container" *ngIf="this.user != undefined">
 
+  <div class="container" *ngIf="this.user != undefined">
+    <!-- Image de profil -->
     <div class="avatarBox">
       <ion-avatar class="pictureProfil">
         <img src="../../../assets/images/profile.jpg" alt="Your photo" class="pictureProfil"/>
       </ion-avatar>
     </div>
 
-
+    <!-- Partie avec les information de l'utilisateur -->
     <ion-item lines="full">
       <ion-label ><b>Name : </b>
         <ion-text>{{this.user.name}}</ion-text>
@@ -43,6 +45,7 @@
     <ion-row>
       <ion-col>
 
+        <!--emplacement des boutons -->
         <div class="logoutDiv">
           <ion-button expand="shape">Update informations</ion-button>
           <ion-button expand="shape">Update password</ion-button>
@@ -52,5 +55,5 @@
       </ion-col>
     </ion-row>
   </div>
-  
+
 </ion-content>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { AuthService } from 'src/app/auth/auth.service';
 
+//TODO : faire un fichier interface si un dossier pour les models est créé
 interface User {
   name: string;
   firstname: string;
@@ -16,32 +17,28 @@ interface User {
 })
 
 export class ProfilPage implements OnInit {
-
   user:User;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit():void {
-
-    console.log(JSON.stringify("this.user onInit: " + this.user));
-    
   }
 
 
+  //on appelle la fonction logout du authService pour se déconnecter
   async logout(){
    await this.authService.logout();
   }
-  async ionViewWillEnter() {
 
-    await this.getUserData().then(() => console.log("this.user : " + this.user));
-    
-    
-}
+  //se place après le ngOnInit, mauvaise pratique de mettre le ngOnInit en asynchrone
+  async ionViewWillEnter() {
+    await this.getUserData().then(() => console.log("profil loaded"));
+  }
+
+  //Pour récupérer les données de l'utilisateur
   async getUserData(){
     return await Preferences.get({key: 'USER'}).then(data => {
       this.user = JSON.parse(data.value);
-      console.log(JSON.stringify(this.user));
-
     });
   }
 }
