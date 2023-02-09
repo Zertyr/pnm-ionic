@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <form  [formGroup]="editForm" (ngSubmit)="onEdit()" class="forms container">
+    <div class="input-group">
+      <h3 class="ion-text-center">Changer Profil</h3>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="name" placeholder="Name" formControlName="name"></ion-input>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="(editForm.get('name').dirty || editForm.get('name').touched) && editForm.get('name').errors" class="errors">
+        <span *ngIf="editForm.get('name').dirty">Name need atleast 2 char</span>
+      </div>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="firstname" placeholder="Firstname" formControlName="firstname"></ion-input>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="(editForm.get('firstname').dirty || editForm.get('firstname').touched) && editForm.get('firstname').errors" class="errors">
+        <span *ngIf="editForm.get('firstname').dirty">Firstname need atleast 2 char</span>
+
+      </div>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="lastname" placeholder="lastname" formControlName="lastname"></ion-input>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="(editForm.get('lastname').dirty || editForm.get('lastname').touched) && editForm.get('lastname').errors" class="errors">
+        <span *ngIf="editForm.get('lastname').dirty">Lastname need atleast 2 char</span>
+      </div>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="email" placeholder="Email" formControlName="email" [disabled]="true"></ion-input>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="(editForm.get('email').dirty || editForm.get('email').touched) && editForm.get('email').errors" class="errors">
+        <span *ngIf="editForm.get('email').errors?.required">Email is required</span>
+        <span *ngIf="editForm.get('email').errors?.email">Email no valid</span>
+      </div>
+      <h3 class="ion-text-center secondPart">Change password</h3>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="password" placeholder="Password" formControlName="password" minlength="6"></ion-input>
+        </ion-label>
+      </ion-item>
+      <div class="errors"  *ngIf="editForm.get('password').errors?.required">
+        <span>your current password is required <br></span>
+      </div>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="password" placeholder="Nouveau Password" formControlName="newpassword" minlength="6"></ion-input>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="(editForm.get('newpassword').dirty || editForm.get('newpassword').touched) && editForm.get('newpassword').errors" class="errors">
+        <span *ngIf="editForm.get('newpassword').errors?.required">Password is required</span>
+        <span *ngIf="editForm.get('newpassword').dirty">Password need atleast 6 char</span>
+      </div>
+      <ion-item lines="full">
+        <ion-label>
+          <ion-input type="password" placeholder="Retaper Password" formControlName="newpassword2" 
+          [pattern]="editForm.get('newpassword')?.value"
+          ></ion-input>
+        </ion-label>
+      </ion-item>
+      <div *ngIf="(editForm.get('newpassword2').dirty || editForm.get('newpassword2').touched) && editForm.get('newpassword2').errors" class="errors">
+        <span *ngIf="editForm.get('newpassword2').errors?.required">confirm your new password</span>
+        <small
+        class="text-danger"
+        *ngIf="editForm.get('newpassword2')?.hasError('pattern')"
+      >
+        New password mismatch
+      </small>
+      </div>
+    </div>
+
+    <ion-button type="submit" expand="block" [disabled]="!editForm.valid && editForm.get('newpassword') != editForm.get('newpassword2')">
+      Valider
+    </ion-button>
+  </form>
+</ion-content>

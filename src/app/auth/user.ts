@@ -5,3 +5,11 @@ export interface User {
     password: string;
     device_name: string;
 }
+
+export interface UserInfo {
+    id: number;
+    name: string;
+    firstname: string;
+    lastname: string;
+    password: string
+  }

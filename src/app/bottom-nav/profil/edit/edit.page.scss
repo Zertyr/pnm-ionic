@@ -1,0 +1,19 @@
+span {
+    color: red;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.forms{
+width: 90%;
+padding-bottom: 5vh;
+}
+
+.error {
+    color: red;
+}
