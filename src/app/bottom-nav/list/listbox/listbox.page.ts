@@ -58,4 +58,16 @@ export class ListboxPage implements OnInit {
       });
     })
   }
+
+  /**
+   * Delete an item
+   * @param itemId
+   */
+  deleteItem(itemId: number) {
+    this.itemService.deleteItem(itemId).then(() => {
+
+      const listWithoutDeletedItem = this.itemList.filter(value => value.id !== itemId);
+      this.itemList = listWithoutDeletedItem;
+    })
+  }
 }

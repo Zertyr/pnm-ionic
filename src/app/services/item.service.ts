@@ -44,6 +44,8 @@ export class ItemService {
    */
   async getLastItemByInventory(id: number) {
     this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
+    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+
     if (this.userStorage != null) {
 
       const headers = new HttpHeaders({
@@ -54,4 +56,22 @@ export class ItemService {
     }
   }
 
+  /**
+   * Delete item
+   * @param itemId
+   */
+  async deleteItem(itemId: number) {
+    this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
+    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+    if (this.userStorage != null) {
+
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.accessToken}`
+      });
+      return this.http.delete(environment.uriAPI + ITEM_URL + `/${itemId}`, {headers: headers}).subscribe(value => {
+        console.log(value)
+      })
+    }
+  }
 }
