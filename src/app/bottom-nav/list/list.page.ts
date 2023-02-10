@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {InventoryService} from "../../services/inventory.service";
 import {Router} from "@angular/router";
+import {ItemService} from "../../services/item.service";
+import {logging} from "protractor";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-list',
@@ -12,7 +15,7 @@ export class ListPage implements OnInit{
   inventoryList: any = []
   newListName: string ="";
 
-  constructor(private inventoryService: InventoryService, private router: Router) {}
+  constructor(private inventoryService: InventoryService, private router: Router, private itemService: ItemService) {}
 
   ngOnInit(): void {
     this.dataInventory();
@@ -55,5 +58,31 @@ export class ListPage implements OnInit{
     }).catch((error) => {
       console.log("Error : ",error.message)
     });
+  }
+
+  /**
+   * Delete inventory and delete items related to the inventory
+   * @param inventoryId
+   */
+   deleteInventory(inventoryId: number) {
+
+    let itemList;
+    this.inventoryService.getInventoryItems(inventoryId).then(value => {
+
+      value.subscribe(data => {
+        itemList = data
+        itemList.forEach(value2 => {
+          this.itemService.deleteItem(value2.id)
+
+        })
+      })
+    })
+
+    this.inventoryService.deleteInventory(inventoryId).then(() => {
+
+      const listWithoutDeletedInventory = this.inventoryList.filter(value => value.id !== inventoryId);
+      this.inventoryList = listWithoutDeletedInventory
+    });
+
   }
 }

@@ -6,7 +6,7 @@ import {
   environment,
   INVENTORY_BY_USER_URL,
   INVENTORY_ITEM_URL,
-  INVENTORY_URL,
+  INVENTORY_URL, ITEM_URL,
   LAST_INVENTORY_URL_BY_USER_ID, LAST_ITEM_URL
 } from "../../environments/environment";
 
@@ -29,7 +29,7 @@ export class InventoryService {
   async getInventoryItems(id: number) {
     this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
     this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
-
+    console.log("ID : " + id)
     if (this.userStorage != null) {
 
       const headers = new HttpHeaders({
@@ -95,6 +95,26 @@ export class InventoryService {
       const body = {label: label, user_id: this.userStorage.id}
 
       return this.http.post(environment.uriAPI + INVENTORY_URL, body, {headers: headers}).subscribe(value => {
+        console.log(value)
+      })
+    }
+  }
+
+  /**
+   * Delete inventory
+   * @param inventoryId
+   */
+  async deleteInventory(inventoryId: number) {
+    this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
+    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+
+    if (this.userStorage != null) {
+
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.accessToken}`
+      });
+      return this.http.delete(environment.uriAPI + INVENTORY_URL + `/${inventoryId}`, {headers: headers}).subscribe(value => {
         console.log(value)
       })
     }
