@@ -29,14 +29,6 @@ export class ListboxPage implements OnInit {
   }
 
   /**
-   * Redirect to Inventory list page
-   */
-  goToListInventory() {
-    this.router.navigate(['/tabs/list']);
-
-  }
-
-  /**
    * Create a new Item
    * Call createNewItem, get the lastItem created (new one), add it to the current list of items
    */
@@ -47,8 +39,8 @@ export class ListboxPage implements OnInit {
       alert("Le nom de l'objet est trop court (1 minimum)")
       return;
     }
-    this.itemService.createNewItem(this.newItemName, this.inventoryId).then(() => {
-      this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
+    await this.itemService.createNewItem(this.newItemName, this.inventoryId).then(async () => {
+     await this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
         data.subscribe(value => {
           lastItemCreated = value
           this.itemList.push(lastItemCreated)

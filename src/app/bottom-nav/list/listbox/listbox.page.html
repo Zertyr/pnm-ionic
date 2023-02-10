@@ -1,8 +1,10 @@
 <ion-header>
-    <ion-button (click)="goToListInventory()" >
-      <ion-icon name="arrow-back"></ion-icon>
-    </ion-button>
+  <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="#"></ion-back-button>
+  </ion-buttons>
     <ion-title class="toto">{{inventoryLabel}}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
