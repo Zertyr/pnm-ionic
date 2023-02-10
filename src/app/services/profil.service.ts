@@ -31,4 +31,20 @@ export class ProfilService {
 
     return this.httpClient.patch<UserInfo>(url , user , { headers });
   }
+
+  /**
+   * Delete current user account
+   * @param user 
+   * @returns 
+   */
+  async deleteUser(user) : Promise<Observable<any>>{
+    let url = environment.uriAPI + "/user/" + user.id;
+    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.accessToken}`
+    });
+    return this.httpClient.delete<any>(url , { headers });
+  }
 }
