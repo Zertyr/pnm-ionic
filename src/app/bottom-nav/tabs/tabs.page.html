@@ -1,5 +1,15 @@
 <ion-tabs>
+  <ion-tab-bar slot="top" *ngIf="this.showTopBar">
+    <ion-tab-button tab="cam">
+      <ion-icon name="camera"></ion-icon>
+      <ion-label>Scan</ion-label>
+    </ion-tab-button>
 
+    <ion-tab-button tab="about">
+      <ion-icon name="list"></ion-icon>
+      <ion-label>List Qr</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="list">
       <ion-icon name="list-circle-outline"></ion-icon>

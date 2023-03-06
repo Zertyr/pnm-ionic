@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {InventoryService} from "../../services/inventory.service";
+import {Router} from "@angular/router";
+import {ItemService} from "../../services/item.service";
+import {logging} from "protractor";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-list',
@@ -8,22 +12,77 @@ import {InventoryService} from "../../services/inventory.service";
 })
 export class ListPage implements OnInit{
 
-  setInventoryListList: any = []
+  inventoryList: any = []
+  newListName: string ="";
 
-  constructor(private inventoryService: InventoryService) {}
+  constructor(private inventoryService: InventoryService, private router: Router, private itemService: ItemService) {}
 
   ngOnInit(): void {
     this.dataInventory();
 
   }
     dataInventory = () => {
-     this.inventoryService.getLoggedInUser().then(value => {
-       value.subscribe(value1 => {
+     this.inventoryService.getInventoriesByUserID().then(value => {
+       value.subscribe(data => {
 
-         this.setInventoryListList = value1
-         console.log(this.setInventoryListList)
+         this.inventoryList = data
+         console.log(this.inventoryList)
        })
     })
   }
 
+
+
+  gotoInventoryBox(item: any) {
+    this.router.navigate(['/tabs/list/listbox'],{queryParams: {id: item.id, label: item.label}});
+  }
+
+  /**
+   *Create a new Inventory
+   * Call createNewInventory, get the lastInventory created (new one), add it to the current list of inventory
+   */
+  async createNewInventory() {
+    let lastInventoryCreated ;
+
+    if (this.newListName.length < 1) {
+      alert("Le nom de la pièce est trop court (1 caractère minimum)")
+      return;
+    }
+    this.inventoryService.createNewInventory(this.newListName).then(() => {
+      this.inventoryService.getLastInventoryByUserID().then(data => {
+        data.subscribe(value => {
+          lastInventoryCreated = value;
+          this.inventoryList.push(lastInventoryCreated);
+        })
+      })
+    }).catch((error) => {
+      console.log("Error : ",error.message)
+    });
+  }
+
+  /**
+   * Delete inventory and delete items related to the inventory
+   * @param inventoryId
+   */
+   deleteInventory(inventoryId: number) {
+
+    let itemList;
+    this.inventoryService.getInventoryItems(inventoryId).then(value => {
+
+      value.subscribe(data => {
+        itemList = data
+        itemList.forEach(value2 => {
+          this.itemService.deleteItem(value2.id)
+
+        })
+      })
+    })
+
+    this.inventoryService.deleteInventory(inventoryId).then(() => {
+
+      const listWithoutDeletedInventory = this.inventoryList.filter(value => value.id !== inventoryId);
+      this.inventoryList = listWithoutDeletedInventory
+    });
+
+  }
 }
