@@ -46,12 +46,9 @@ export class ListboxPage implements OnInit {
   }
 
   async getLastItem() {
-    let lastItemCreated;
-    setTimeout("1000");
-    await this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
+    await this.inventoryService.getInventoryItems(this.inventoryId).then(data => {
       data.subscribe(value => {
-        lastItemCreated = value
-        this.itemList.push(lastItemCreated)
+        this.itemList = value
       })
     }).catch((error) => {
       console.log("Error : ", error.message)
