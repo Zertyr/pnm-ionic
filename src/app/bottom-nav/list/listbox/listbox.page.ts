@@ -46,9 +46,11 @@ export class ListboxPage implements OnInit {
   }
 
   async getLastItem() {
+
     await this.inventoryService.getInventoryItems(this.inventoryId).then(data => {
       data.subscribe(value => {
-        this.itemList = value
+        this.itemList = [];
+        this.itemList.push(value);
       })
     }).catch((error) => {
       console.log("Error : ", error.message)
