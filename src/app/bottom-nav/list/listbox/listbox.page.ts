@@ -33,13 +33,20 @@ export class ListboxPage implements OnInit {
    * Call createNewItem, get the lastItem created (new one), add it to the current list of items
    */
   async createNewItem() {
-    let lastItemCreated;
 
     if (this.newItemName.length < 1) {
       alert("Le nom de l'objet est trop court (1 minimum)")
       return;
     }
-    await this.itemService.createNewItem(this.newItemName, this.inventoryId);
+    await this.itemService.createNewItem(this.newItemName, this.inventoryId).then(() =>{
+      this.getLastItem();
+    });
+
+  }
+
+  async getLastItem() {
+    let lastItemCreated;
+
     await this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
       data.subscribe(value => {
         lastItemCreated = value
@@ -49,7 +56,6 @@ export class ListboxPage implements OnInit {
       console.log("Error : ", error.message)
     });
   }
-
   /**
    * Delete an item
    * @param itemId
