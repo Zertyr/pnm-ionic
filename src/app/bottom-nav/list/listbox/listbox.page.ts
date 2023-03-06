@@ -39,16 +39,15 @@ export class ListboxPage implements OnInit {
       alert("Le nom de l'objet est trop court (1 minimum)")
       return;
     }
-    await this.itemService.createNewItem(this.newItemName, this.inventoryId).then(async () => {
-     await this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
-        data.subscribe(value => {
-          lastItemCreated = value
-          this.itemList.push(lastItemCreated)
-        })
-      }).catch((error) => {
-        console.log("Error : ", error.message)
-      });
-    })
+    await this.itemService.createNewItem(this.newItemName, this.inventoryId);
+    await this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
+      data.subscribe(value => {
+        lastItemCreated = value
+        this.itemList.push(lastItemCreated)
+      })
+    }).catch((error) => {
+      console.log("Error : ", error.message)
+    });
   }
 
   /**
