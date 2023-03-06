@@ -28,25 +28,26 @@ export class ListboxPage implements OnInit {
     })
   }
 
+  async createNewItem() {
+    await this.itemService.createNewItem(this.newItemName, this.inventoryId);
+  }
   /**
    * Create a new Item
    * Call createNewItem, get the lastItem created (new one), add it to the current list of items
    */
-  async createNewItem() {
+   createAndDisplayNewItem() {
 
     if (this.newItemName.length < 1) {
       alert("Le nom de l'objet est trop court (1 minimum)")
       return;
     }
-    await this.itemService.createNewItem(this.newItemName, this.inventoryId).then(async () =>{
-      await this.getLastItem();
-    });
 
+    this.createNewItem().then(() => this.getLastItem())
   }
 
   async getLastItem() {
     let lastItemCreated;
-
+    setTimeout("1000");
     await this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
       data.subscribe(value => {
         lastItemCreated = value
