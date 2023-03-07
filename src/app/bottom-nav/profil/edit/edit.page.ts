@@ -141,6 +141,7 @@ export class EditPage implements OnInit {
             header: 'Error',
             message: 'your current password don\'t match',
             buttons: ['OK'],
+            cssClass: 'modalMessage'
           });
 
           return alert.present();
@@ -158,6 +159,7 @@ export class EditPage implements OnInit {
           header: 'Error',
           message: 'nothing has changed',
           buttons: ['OK'],
+          cssClass: 'modalMessage'
         });
 
         return alert.present();
@@ -191,6 +193,7 @@ export class EditPage implements OnInit {
           header: 'Success',
           message: 'Update succesfull',
           buttons: ['OK'],
+          cssClass: 'modalMessage'
         });
 
         return alert.present().then(() => this.authService.logout());
@@ -200,6 +203,7 @@ export class EditPage implements OnInit {
           header: 'Error',
           message: 'An error was encounter during the update',
           buttons: ['OK'],
+          cssClass: 'modalMessage'
         });
         return alert.present();
       }

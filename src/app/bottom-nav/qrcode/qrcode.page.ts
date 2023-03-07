@@ -137,4 +137,7 @@ export class QrCodePage implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.stopScan();
   }
+  ionViewDidLeave(){
+    this.stopScan();
+  }
 }

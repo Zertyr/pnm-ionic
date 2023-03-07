@@ -29,6 +29,7 @@ export class RegisterPage implements OnInit {
             header: 'Error',
             message: 'Email already used',
             buttons: ['OK'],
+            cssClass: 'modalMessage'
           });
       
           return alert.present();
@@ -38,6 +39,7 @@ export class RegisterPage implements OnInit {
             header: 'Succès',
             message: 'Account created !',
             buttons: ['OK'],
+            cssClass: 'modalMessage'
           });
       
           await alert.present();
