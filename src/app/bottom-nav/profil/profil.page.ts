@@ -76,7 +76,8 @@ export class ProfilPage implements OnInit {
               });
           }
         }
-      ]
+      ],
+      cssClass: 'modalMessage'
     });
     alert.present()
   }

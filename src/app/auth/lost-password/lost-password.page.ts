@@ -28,6 +28,7 @@ export class LostPasswordPage implements OnInit {
           header: 'Error',
           message: 'Cannot send email',
           buttons: ['OK'],
+          cssClass: 'modalMessage'
         });
     
         return alert.present();
@@ -37,6 +38,7 @@ export class LostPasswordPage implements OnInit {
           header: 'Succès',
           message: 'Email send',
           buttons: ['OK'],
+          cssClass: 'modalMessage'
         });
     
         await alert.present();
