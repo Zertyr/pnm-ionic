@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {InventoryService} from "../../../services/inventory.service";
 import {ItemService} from "../../../services/item.service";
+import {BoxService} from "../../../services/box.service";
+import {ItemBoxService} from "../../../services/item-box.service";
 
 @Component({
   selector: 'app-listbox',
@@ -14,7 +16,8 @@ export class ListboxPage implements OnInit {
   inventoryLabel: string;
   inventoryId: number;
   newItemName: string;
-  constructor(private router: Router, private route: ActivatedRoute, private inventoryService: InventoryService, private itemService: ItemService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private inventoryService: InventoryService, private itemService: ItemService,
+              private boxService: BoxService, private itemBoxService: ItemBoxService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(reqParams => {
@@ -68,6 +71,54 @@ export class ListboxPage implements OnInit {
 
       const listWithoutDeletedItem = this.itemList.filter(value => value.id !== itemId);
       this.itemList = listWithoutDeletedItem;
+    })
+  }
+
+  /**
+   * Launched after less quantity button has been pressed
+   * @param index = index of the item inside itemList
+   */
+  buttonMinusPressed(index: number) {
+    const newItems = this.itemList;
+
+    if (newItems[index].quantity <= 0) {
+      return;
+    }
+    newItems[index].quantity--
+    this.itemList = newItems
+     }
+
+  /**
+   * Launched after add quantity button has been pressed
+   * @param index = index of the item inside itemList
+   */
+  buttonPlusPressed(index : number) {
+    const newItems = this.itemList;
+    newItems[index].quantity++
+    this.itemList = newItems
+  }
+
+  /**
+   * Method launched after click on button "Generate a Box"
+   * This method create a box
+   * after that, get the last box from the user (to get the id of the new box in the bdd)
+   * fill the table ItemBox with items selected by the user
+   */
+    async generateBox() {
+    alert("Carton terminé");
+    let lastBoxOfUserId;
+    await this.boxService.generateBoxes(this.inventoryLabel).then(async () => {
+      await this.boxService.getLastBoxFromTheUser().then(data => {
+        data.subscribe(value => {
+
+          lastBoxOfUserId = value
+          console.log(this.itemList.map(value => value).filter(value => value.quantity > 0))
+          let itemInBox: Array<any> = this.itemList.map(value => value).filter(value => value.quantity > 0)
+          for (let i = 0; i < itemInBox.length; i++) {
+            this.itemBoxService.createItemBox(itemInBox[i].id, lastBoxOfUserId.id, itemInBox[i].quantity)
+          }
+        })
+      })
     })
   }
 }
