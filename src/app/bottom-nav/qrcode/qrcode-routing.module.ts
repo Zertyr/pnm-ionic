@@ -6,7 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: QrCodePage,
+  },
+  {
+    path: 'list-qrcode',
+    loadChildren: () => import('./list-qrcode/list-qrcode.module').then( m => m.ListQrcodePageModule)
   }
+
 ];
 
 @NgModule({
