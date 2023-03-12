@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../qrcode/qrcode.module').then(m => m.QrCodePageModule)
       },
       {
+        path: 'listBox',
+        loadChildren: () => import('../qrcode/list-qrcode/list-qrcode.module').then(m => m.ListQrcodePageModule)
+      },
+      {
         path: 'profil',
         loadChildren: () => import('../profil/profil.module').then(m => m.ProfilPageModule)
       },
