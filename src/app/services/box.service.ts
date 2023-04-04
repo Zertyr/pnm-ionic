@@ -41,4 +41,49 @@ export class BoxService {
       })
     }
   }
+  /**
+   * Get all box of the user
+   */
+  async getAllBox(){
+    this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
+    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+
+    if(this.userStorage != null){
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.accessToken}`
+      });
+      return this.http.get(environment.uriAPI+"/box/all-by-user"+`/${this.userStorage.id}`, {headers: headers})
+    }
+  }
+
+    /**
+   * Get all box of the user
+   */
+    async deleteBox(id){
+      this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
+      this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+  
+      if(this.userStorage != null){
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.accessToken}`
+        });
+        return this.http.delete(environment.uriAPI+"/box"+`/${id}`, {headers: headers})
+      }
+    }
+
+    /**
+     * Get all item by box
+     */
+    async showItemByBox(id:number){
+      this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
+      if(this.accessToken != null){
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.accessToken}`
+        });
+        return this.http.get(environment.uriAPI+"/box"+`/all-item/${id}`, {headers: headers})
+      }
+    }
 }
