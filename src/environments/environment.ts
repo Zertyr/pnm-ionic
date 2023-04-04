@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uriAPI: 'http://127.0.0.1:8000/api',
+  uriAPI: 'http://10.59.206.33:8000/api',
   YOUR_API_KEY: 'GOOGLE_API_KEY'
 };
 
@@ -20,6 +20,7 @@ export const LAST_ITEM_URL = '/lastitem'
 
 export const BOX_URL = "/box"
 export const LASTBOX_USER = "/box/lastbox"
+export const BOX_ITEM_URL = "/box/generateBoxAndCreateItemBox"
 
 
 export const ITEM_BOX_URL = "/itembox"

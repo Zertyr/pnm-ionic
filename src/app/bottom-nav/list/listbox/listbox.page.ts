@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {InventoryService} from "../../../services/inventory.service";
 import {ItemService} from "../../../services/item.service";
 import {BoxService} from "../../../services/box.service";
 import {ItemBoxService} from "../../../services/item-box.service";
+import {ItemObject} from "../../../models/ItemObject";
 
 @Component({
   selector: 'app-listbox',
@@ -16,8 +17,10 @@ export class ListboxPage implements OnInit {
   inventoryLabel: string;
   inventoryId: number;
   newItemName: string;
+
   constructor(private router: Router, private route: ActivatedRoute, private inventoryService: InventoryService, private itemService: ItemService,
-              private boxService: BoxService, private itemBoxService: ItemBoxService) { }
+              private boxService: BoxService, private itemBoxService: ItemBoxService) {
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(reqParams => {
@@ -40,25 +43,21 @@ export class ListboxPage implements OnInit {
   }
 
   /**
-   * Create a new Item
-   * Call createNewItem, get the lastItem created (new one), add it to the current list of items
+   * Create a new Item & add it to the current list of items
    */
   async createNewItem() {
-    let lastItemCreated;
 
     if (this.newItemName.length < 1) {
       alert("Le nom de l'objet est trop court (1 minimum)")
       return;
     }
-    this.itemService.createNewItem(this.newItemName, this.inventoryId).then(() => {
-      this.itemService.getLastItemByInventory(this.inventoryId).then(data => {
-        data.subscribe(value => {
-          lastItemCreated = value
-          this.itemList.push(lastItemCreated)
-        })
-      }).catch((error) => {
-        console.log("Error : ", error.message)
-      });
+    await this.itemService.createNewItem(this.newItemName, this.inventoryId).then(value => {
+      value.subscribe(data => {
+        this.itemList.push({id: data, label: this.newItemName, quantity: 0, default: 0})
+
+      })
+
+
     })
   }
 
@@ -86,13 +85,13 @@ export class ListboxPage implements OnInit {
     }
     newItems[index].quantity--
     this.itemList = newItems
-     }
+  }
 
   /**
    * Launched after add quantity button has been pressed
    * @param index = index of the item inside itemList
    */
-  buttonPlusPressed(index : number) {
+  buttonPlusPressed(index: number) {
     const newItems = this.itemList;
     newItems[index].quantity++
     this.itemList = newItems
@@ -104,21 +103,20 @@ export class ListboxPage implements OnInit {
    * after that, get the last box from the user (to get the id of the new box in the bdd)
    * fill the table ItemBox with items selected by the user
    */
-    async generateBox() {
+  async generateBox() {
     alert("Carton terminé");
     let lastBoxOfUserId;
-    await this.boxService.generateBoxes(this.inventoryLabel).then(async () => {
-      await this.boxService.getLastBoxFromTheUser().then(data => {
-        data.subscribe(value => {
 
-          lastBoxOfUserId = value
-          console.log(this.itemList.map(value => value).filter(value => value.quantity > 0))
-          let itemInBox: Array<any> = this.itemList.map(value => value).filter(value => value.quantity > 0)
-          for (let i = 0; i < itemInBox.length; i++) {
-            this.itemBoxService.createItemBox(itemInBox[i].id, lastBoxOfUserId.id, itemInBox[i].quantity)
-          }
-        })
-      })
-    })
+    let itemInBox: Array<any> = this.itemList.map(value => value).filter(value => value.quantity > 0)
+    let itemBox: Array<ItemObject> = [];
+    for (let i = 0; i < itemInBox.length; i++) {
+        itemBox.push({item_id: itemInBox[i].id,quantity: itemInBox[i].quantity})
+    }
+
+
+
+      await this.boxService.generateBoxes(this.inventoryLabel,itemBox).then(value => {
+        console.log("VALUE : " , value);
+      });
   }
 }

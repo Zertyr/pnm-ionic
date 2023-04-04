@@ -32,27 +32,7 @@ export class ItemService {
 
       const body = {label: label, inventory_id: inventoryId}
 
-      return this.http.post(environment.uriAPI + ITEM_URL, body, {headers: headers}).subscribe(value => {
-        console.log(value)
-      })
-    }
-  }
-
-  /**
-   * Get last item created of the inventory
-   * @param id = id of the inventory
-   */
-  async getLastItemByInventory(id: number) {
-    this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
-    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
-
-    if (this.userStorage != null) {
-
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.accessToken}`
-      });
-      return this.http.get(environment.uriAPI+LAST_ITEM_URL+`/${id}`, {headers: headers})
+      return this.http.post(environment.uriAPI + ITEM_URL, body, {headers: headers})
     }
   }
 

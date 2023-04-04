@@ -60,24 +60,6 @@ export class InventoryService {
   }
 
   /**
-   * Return last inventory created by the user
-   */
-  async getLastInventoryByUserID() {
-    this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
-    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
-
-    if (this.userStorage != null) {
-
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.accessToken}`
-      });
-
-      return this.http.get(environment.uriAPI + LAST_INVENTORY_URL_BY_USER_ID + `/${this.userStorage.id}`, {headers: headers})
-    }
-  }
-
-  /**
    * Create a new inventory
    * @param label = name of the inventory; input returned by the user
    */
@@ -94,9 +76,7 @@ export class InventoryService {
 
       const body = {label: label, user_id: this.userStorage.id}
 
-      return this.http.post(environment.uriAPI + INVENTORY_URL, body, {headers: headers}).subscribe(value => {
-        console.log(value)
-      })
+      return this.http.post(environment.uriAPI + INVENTORY_URL, body, {headers: headers})
     }
   }
 

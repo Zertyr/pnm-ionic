@@ -31,11 +31,10 @@ export class ItemBoxService {
         'Authorization': `Bearer ${this.accessToken}`
       });
 
-      const body = {item_id: item_id, box_id: box_id, quantity: quantity}
+      const result = {item_id: item_id, box_id: box_id, quantity: quantity}
 
-      return this.http.post(environment.uriAPI + ITEM_BOX_URL, body, {headers: headers}).subscribe(value => {
-        console.log("ITEM BOX : " + JSON.stringify(value))
-      })
+      console.log("VODY box_id: " + result)
+      return this.http.post(environment.uriAPI + ITEM_BOX_URL, result, {headers: headers});
     }
   }
 }
