@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from "../auth/user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Preferences} from "@capacitor/preferences";
-import {BOX_URL, environment, LASTBOX_USER} from "../../environments/environment";
+import {BOX_ITEM_URL, BOX_URL, environment, LASTBOX_USER} from "../../environments/environment";
+import {ItemObject} from "../models/ItemObject";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class BoxService {
    * Create a bow
    * @param inventoryLabel = name of the box
    */
-  async generateBoxes(inventoryLabel: string) {
+  async generateBoxes(inventoryLabel: string, itemBox: Array<ItemObject>) {
     this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
     this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
 
@@ -28,29 +29,16 @@ export class BoxService {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.accessToken}`
       });
+      const box = {label: inventoryLabel, qrcode: "qrcode", user_id: this.userStorage.id};
+      const body = [box,itemBox];
 
-      const body = {label: inventoryLabel, qrcode: "qrcode", user_id: this.userStorage.id}
+      console.log("box " + JSON.stringify(box));
+      console.log("itemBox " + JSON.stringify(itemBox));
+      console.log("body " + JSON.stringify(body));
 
-      return this.http.post(environment.uriAPI + BOX_URL, body, {headers: headers}).subscribe(value => {
-        console.log("POST BOX : " + JSON.stringify(value))
+      return this.http.post(environment.uriAPI + BOX_ITEM_URL, body, {headers: headers}).subscribe(value => {
+        return value;
       })
-    }
-  }
-
-  /**
-   * Get the last box created by the user
-   */
-  async getLastBoxFromTheUser() {
-    this.userStorage = JSON.parse((await Preferences.get({key: 'USER'})).value);
-    this.accessToken = (await Preferences.get({key: 'ACCESS_TOKEN'})).value;
-
-    if (this.userStorage != null) {
-
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.accessToken}`
-      });
-      return this.http.get(environment.uriAPI+LASTBOX_USER+`/${this.userStorage.id}`, {headers: headers})
     }
   }
 }

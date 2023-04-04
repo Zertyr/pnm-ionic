@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {InventoryService} from "../../services/inventory.service";
 import {Router} from "@angular/router";
 import {ItemService} from "../../services/item.service";
-import {logging} from "protractor";
-import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-list',
@@ -38,26 +36,22 @@ export class ListPage implements OnInit{
   }
 
   /**
-   *Create a new Inventory
-   * Call createNewInventory, get the lastInventory created (new one), add it to the current list of inventory
+   *Create a new Inventory & add it to the current list of inventory
    */
   async createNewInventory() {
-    let lastInventoryCreated ;
 
     if (this.newListName.length < 1) {
       alert("Le nom de la pièce est trop court (1 caractère minimum)")
       return;
     }
-    this.inventoryService.createNewInventory(this.newListName).then(() => {
-      this.inventoryService.getLastInventoryByUserID().then(data => {
-        data.subscribe(value => {
-          lastInventoryCreated = value;
-          this.inventoryList.push(lastInventoryCreated);
-        })
+    this.inventoryService.createNewInventory(this.newListName).then(value => {
+      value.subscribe(data =>{
+
+        this.inventoryList.push({id:data,label:this.newListName});
+        console.log("re : " + JSON.stringify(this.inventoryList))
+
       })
-    }).catch((error) => {
-      console.log("Error : ",error.message)
-    });
+    })
   }
 
   /**
