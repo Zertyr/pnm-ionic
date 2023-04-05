@@ -10,7 +10,11 @@ const routes: Routes = [
   {
     path: 'list-qrcode',
     loadChildren: () => import('./list-qrcode/list-qrcode.module').then( m => m.ListQrcodePageModule)
+  },  {
+    path: 'view-qrcode',
+    loadChildren: () => import('./view-qrcode/view-qrcode.module').then( m => m.ViewQrcodePageModule)
   }
+
 
 ];
 

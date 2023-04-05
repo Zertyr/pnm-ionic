@@ -18,7 +18,7 @@
 
   <div class="qrCode">
     <qrcode
-    [hidden]="!scannerButton"
+    [hidden]="scannedResult || !scannerButton"
     [qrdata]="'Pack\'N Move'"
     [width]="256"
     [errorCorrectionLevel]="'M'"

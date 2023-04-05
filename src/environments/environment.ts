@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uriAPI: 'http://10.59.206.33:8000/api',
+  uriAPI: 'http://192.168.228.59:8000/api',
   YOUR_API_KEY: 'GOOGLE_API_KEY'
 };
 
