@@ -13,7 +13,7 @@
     (click)="stopScan()"
     [hidden]="!scanActive"
   >
-    Close
+    Fermer
   </ion-button>
 
   <div class="qrCode">
@@ -30,8 +30,8 @@
     <ion-grid>
 
       <ion-row class="borderBottom">
-        <ion-col>Name</ion-col>
-        <ion-col>Quantity</ion-col>
+        <ion-col>Nom</ion-col>
+        <ion-col>Quantité</ion-col>
       </ion-row>
 
       <ion-row *ngFor="let item of scannedResult" class="borderBottom">

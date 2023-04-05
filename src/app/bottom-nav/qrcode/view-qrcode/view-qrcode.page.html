@@ -10,7 +10,7 @@
   expand="block"
   class="ion-margin"
 >
-  Share it
+  Partage
 </ion-button>
   <div  class="qrCode" id='qrcode'>
     <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
@@ -20,8 +20,8 @@
   <ion-grid>
 
     <ion-row class="borderBottom">
-      <ion-col>Name</ion-col>
-      <ion-col>Quantity</ion-col>
+      <ion-col>Nom</ion-col>
+      <ion-col>Quantité</ion-col>
     </ion-row>
 
     <ion-row *ngFor="let item of itemsBox" class="borderBottom">

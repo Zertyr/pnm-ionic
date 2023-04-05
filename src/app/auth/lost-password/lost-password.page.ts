@@ -25,8 +25,8 @@ export class LostPasswordPage implements OnInit {
        },
       error: async (error: any) => { 
         const alert = await this.alertController.create({
-          header: 'Error',
-          message: 'Cannot send email',
+          header: 'Erreur',
+          message: 'Impossible d\'envoyer l\'email',
           buttons: ['OK'],
           cssClass: 'modalMessage'
         });
@@ -36,7 +36,7 @@ export class LostPasswordPage implements OnInit {
       complete: async () => { 
         const alert = await this.alertController.create({
           header: 'Succès',
-          message: 'Email send',
+          message: 'Email envoyé',
           buttons: ['OK'],
           cssClass: 'modalMessage'
         });
