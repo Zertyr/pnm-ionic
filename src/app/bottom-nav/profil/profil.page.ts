@@ -51,24 +51,24 @@ export class ProfilPage implements OnInit {
   async deleteUser(){
     //alert confirmation delete
     const alert = await this.alertController.create({
-      header: 'Confirm delete',
-      message: 'Do you really want to delete your account ?',
+      header: 'Confirmation suppression',
+      message: 'Voulez-vous réellement supprimer votre compte ?',
       buttons: [
         {
-          text: 'No',
+          text: 'Non',
           role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Yes',
+          text: 'Oui',
           handler: async () => {
             (await this.profilService.deleteUser(this.user)).subscribe( async()=> {
               //alert delete success
               const alertSuccess = await this.alertController.create({
-                header: 'Success',
-                message: 'Delete succesfull',
+                header: 'Succès',
+                message: 'Supprimer avec succès',
                 buttons: ['OK'],
               });
       

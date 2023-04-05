@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
       error: async (error: any) => { 
         if(error.error.message){
             const alert = await this.alertController.create({
-              header: 'Error',
+              header: 'Erreur',
               message: error.error.message,
               buttons: ['OK'],
               cssClass: 'modalMessage'
@@ -34,8 +34,8 @@ export class LoginPage implements OnInit {
           return alert.present();
         } else {
           const alert = await this.alertController.create({
-            header: 'Error',
-            message: 'server error',
+            header: 'Erreur',
+            message: 'Erreur de communication au serveur',
             buttons: ['OK'],
             cssClass: 'modalMessage'
           });

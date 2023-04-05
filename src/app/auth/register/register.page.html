@@ -10,37 +10,37 @@
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div text-center>
-            <h3>Create your account!</h3>
+            <h3>Créer votre compte !</h3>
           </div>
           <div padding class="forms">
             <ion-item>
-              <ion-input  name="name" type="text" placeholder="Name" ngModel required></ion-input>
+              <ion-input  name="name" type="text" placeholder="Pseudo" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input  name="firstname" type="text" placeholder="firstname" ngModel required></ion-input>
+              <ion-input  name="firstname" type="text" placeholder="Prénom" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input  name="lastname" type="text" placeholder="lastname" ngModel required></ion-input>
+              <ion-input  name="lastname" type="text" placeholder="Nom" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+              <ion-input name="email" type="email" placeholder="Email" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              <ion-input name="password" type="password" placeholder="Mot de passe" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+              <ion-input name="confirm" type="password" placeholder="Mot de passe encore" ngModel required></ion-input>
             </ion-item>
           </div>
           <div padding>
-            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+            <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">S'inscrire</ion-button>
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <div text-center>
-      Already have an account ? <a routerLink='/login'>
-        login</a> 
+      Vous avez déjà un compte ? <a routerLink='/login'>
+        Connectez-vous</a> 
         </div>
     </ion-row>
     </ion-grid>
