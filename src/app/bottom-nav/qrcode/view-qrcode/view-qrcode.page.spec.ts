@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
-
+import { RouterTestingModule } from "@angular/router/testing";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ViewQrcodePage } from './view-qrcode.page';
 
 describe('ViewQrcodePage', () => {
@@ -10,7 +10,7 @@ describe('ViewQrcodePage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ViewQrcodePage ],
-      imports: [IonicModule.forRoot()]
+      imports: [RouterTestingModule, HttpClientTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ViewQrcodePage);

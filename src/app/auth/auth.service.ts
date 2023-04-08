@@ -50,6 +50,7 @@ export class AuthService {
         if (res.user) {
           console.log("res : " + JSON.stringify(res));
 
+          //Ajout des informations en local
           await Preferences.set(
             {
               key: "ACCESS_TOKEN",

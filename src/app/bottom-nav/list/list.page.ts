@@ -21,11 +21,13 @@ export class ListPage implements OnInit{
   }
     dataInventory = () => {
      this.inventoryService.getInventoriesByUserID().then(value => {
-       value.subscribe(data => {
+      if(value){
+        value.subscribe(data => {
 
-         this.inventoryList = data
-         console.log(this.inventoryList)
-       })
+          this.inventoryList = data
+          console.log(this.inventoryList)
+        })
+      }
     })
   }
 

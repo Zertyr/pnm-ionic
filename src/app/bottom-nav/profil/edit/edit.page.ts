@@ -37,10 +37,10 @@ export class EditPage implements OnInit {
 
     //On applique les valuer déjà stocké dans le storage
     this.editForm.patchValue({
-      name: this.user.name,
-      firstname: this.user.firstname,
-      lastname: this.user.lastname,
-      email: this.user.email,
+      name: this.user?.name,
+      firstname: this.user?.firstname,
+      lastname: this.user?.lastname,
+      email: this.user?.email,
     })
   }
 
@@ -174,7 +174,9 @@ export class EditPage implements OnInit {
    */
   async getUserData() {
     return await Preferences.get({ key: 'USER' }).then(data => {
-      this.user = JSON.parse(data.value);
+      if(data){
+        this.user = JSON.parse(data.value);
+      }
     });
   }
 

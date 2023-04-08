@@ -27,9 +27,11 @@ export class ListboxPage implements OnInit {
       this.inventoryLabel = reqParams.label;
       this.inventoryId = reqParams.id;
       this.inventoryService.getInventoryItems(reqParams.id).then(value => {
-        value.subscribe(data => {
-          this.itemList = data
-        })
+        if(value){
+          value.subscribe(data => {
+            this.itemList = data
+          })
+        }
       })
     })
   }
