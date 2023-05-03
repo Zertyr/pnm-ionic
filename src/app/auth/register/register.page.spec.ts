@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { RegisterPage } from './register.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { User, UserClass } from '../user';
 
 describe('RegisterPage', () => {
   let component: RegisterPage;
@@ -11,7 +12,7 @@ describe('RegisterPage', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterPage ],
+      declarations: [RegisterPage],
       imports: [FormsModule, HttpClientTestingModule, IonicModule.forRoot()]
     }).compileComponents();
 
@@ -22,5 +23,31 @@ describe('RegisterPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('User class tests', () => {
+    let user: User = null
+
+    beforeEach(() => {
+      user = new UserClass();
+    });
+
+    it('should have a valid constructor', () => {
+      expect(user).not.toBeNull();
+    });
+
+    it('should set name correctly through constructor', () => {
+      user = new UserClass('Damien');
+      expect(user.name).toEqual('Damien');
+    });
+
+    it('should not set name correctly through constructor', () => {
+      user = new UserClass('Colin');
+      expect(user.name).toEqual('Damien');
+    });
+
+    afterEach(() => {
+      user = null;
+    });
   });
 });

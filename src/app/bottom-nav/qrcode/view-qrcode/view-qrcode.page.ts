@@ -13,6 +13,7 @@ import {
 export class ViewQrcodePage implements OnInit {
 
   label: string;
+  delicate: number;
   itemsBox: any;
   myAngularxQrCode: any;
   constructor(private router: Router, private route: ActivatedRoute, private boxService: BoxService) { }
@@ -32,6 +33,16 @@ export class ViewQrcodePage implements OnInit {
       value.subscribe(data => {
         this.itemsBox = data
         this.myAngularxQrCode = JSON.stringify(this.itemsBox);
+        this.delicate = this.itemsBox[0]?.delicate;
+        if(this.delicate == 1){
+          document.getElementById("qrcode").style.borderColor = "red !important";
+          document.getElementById("qrcode").style.color = "red";
+        } else {
+          document.getElementById("qrcode").style.borderColor = "black !important";
+          document.getElementById("qrcode").style.color = "black";
+        }
+        console.log('data :', this.myAngularxQrCode);
+        
       })
     )
   }

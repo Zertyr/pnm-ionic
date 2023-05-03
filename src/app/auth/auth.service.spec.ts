@@ -8,7 +8,10 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [
+        {provide: AuthService, useValue: jasmine.createSpyObj('AuthService', [], ['currentUser'])},
+      ],
     });
     service = TestBed.inject(AuthService);
   });
