@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { VehicleInformationsPageRoutingModule } from './vehicle-informations-routing.module';
 
 import { VehicleInformationsPage } from './vehicle-informations.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { VehicleInformationsPage } from './vehicle-informations.page';
     IonicModule,
     VehicleInformationsPageRoutingModule
   ],
-  declarations: [VehicleInformationsPage]
+  declarations: [VehicleInformationsPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class VehicleInformationsPageModule {}

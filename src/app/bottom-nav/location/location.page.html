@@ -1,16 +1,7 @@
 <ion-content [fullscreen]="true">
-
-  <capacitor-google-map id="map" #map>
-    <ion-button [routerLink]="['/vehicle-informations']" class="buttonInfo">
-      <ion-icon name="information-circle-outline"></ion-icon>
-    </ion-button>
-  </capacitor-google-map>
-  <ion-popover #popover  [isOpen]="isPopoverOpen" (didDismiss)="isPopoverOpen = false">
-    <ng-template>
-      <app-popover-content class="popover">
-        <h2>{{ title }}</h2>
-        <p>{{ body }}</p>
-      </app-popover-content>
-    </ng-template>
-  </ion-popover>
+  <ion-button [routerLink]="['/vehicle-informations']" class="buttonInfo">
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-button>
+  <div #map id="map"></div>
+ 
 </ion-content>

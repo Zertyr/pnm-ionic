@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  uriAPI: 'http://192.168.1.22:8000/api',
-  YOUR_API_KEY: 'GOOGLE_API_KEY'
+  uriAPI: ' http://192.168.1.22:8000/api',
+  YOUR_API_KEY: 'YOUR_API_KEY'
 };
 
 export const VEHICLES_URL = '/vehicle';
