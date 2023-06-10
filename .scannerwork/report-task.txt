@@ -1,0 +1,6 @@
+projectKey=Pack-And-Move
+serverUrl=http://localhost:9000
+serverVersion=10.0.0.68432
+dashboardUrl=http://localhost:9000/dashboard?id=Pack-And-Move
+ceTaskId=AYil10Y9NSK-CbzUwBO3
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYil10Y9NSK-CbzUwBO3
