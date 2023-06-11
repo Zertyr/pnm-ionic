@@ -1,5 +1,4 @@
 import { AfterContentChecked, Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
 import { INTRO_KEY } from 'src/app/guards/intro.guard';
 import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
@@ -15,7 +14,7 @@ SwiperCore.use([Autoplay, Keyboard, Pagination, Scrollbar, Zoom]);
   encapsulation: ViewEncapsulation.None
 })
 
-export class IntroPage implements OnInit, AfterContentChecked {
+export class IntroPage implements AfterContentChecked {
   @ViewChild('swiper')swiper: SwiperComponent;
 
   config: SwiperOptions = {
@@ -28,10 +27,6 @@ export class IntroPage implements OnInit, AfterContentChecked {
   }
 
   constructor(private router: Router) { }
-
-  ngOnInit() {
-    
-  }
 
   ngAfterContentChecked(): void {
     if(this.swiper){

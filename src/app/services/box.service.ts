@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from "../auth/user";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Preferences} from "@capacitor/preferences";
-import {BOX_ITEM_URL, BOX_URL, environment, LASTBOX_USER} from "../../environments/environment";
+import {BOX_ITEM_URL, environment} from "../../environments/environment";
 import {ItemObject} from "../models/ItemObject";
 
 @Injectable({

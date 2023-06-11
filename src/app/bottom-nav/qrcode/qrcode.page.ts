@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { TabsService } from 'src/app/services/tabs.service';
 
@@ -8,7 +8,7 @@ import { TabsService } from 'src/app/services/tabs.service';
   styleUrls: ['qrcode.page.scss']
 })
 
-export class QrCodePage implements OnInit, OnDestroy {
+export class QrCodePage {
 
   //visibility of the button scanner
   scannerButton: boolean = true;
@@ -129,15 +129,11 @@ export class QrCodePage implements OnInit, OnDestroy {
 
     BarcodeScanner.stopScan();
   };
-  ngOnInit() {
-  }
 
   ionViewWillEnter(){
     this.tabService.setShowTopBar(true);
   }
-  ngOnDestroy(): void {
 
-  }
   ionViewWillLeave() {
     this.stopScan();
     this.tabService.setShowTopBar(false);

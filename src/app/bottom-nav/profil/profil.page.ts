@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ProfilService } from 'src/app/services/profil.service';
 
-//TODO : faire un fichier interface si un dossier pour les models est créé
+//faire un fichier interface si un dossier pour les models est créé
 interface User {
   id: number,
   name: string;
@@ -19,14 +19,10 @@ interface User {
   styleUrls: ['profil.page.scss']
 })
 
-export class ProfilPage implements OnInit {
+export class ProfilPage {
   user:User;
 
   constructor(private authService: AuthService, private profilService: ProfilService, private alertController: AlertController) {}
-
-  ngOnInit():void {
-  }
-
 
   //on appelle la fonction logout du authService pour se déconnecter
   async logout(){

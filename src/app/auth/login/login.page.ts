@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from  "@angular/router";
 import { AuthService } from '../auth.service';
 import { AlertController } from '@ionic/angular';
@@ -8,12 +8,9 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
   constructor(private  authService:  AuthService, private  router:  Router, private alertController: AlertController) { }
-
-  ngOnInit() {
-  }
 
   async login(form){
     await this.authService.login(form.value).subscribe({

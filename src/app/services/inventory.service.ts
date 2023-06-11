@@ -6,8 +6,7 @@ import {
   environment,
   INVENTORY_BY_USER_URL,
   INVENTORY_ITEM_URL,
-  INVENTORY_URL,
-  LAST_INVENTORY_URL_BY_USER_ID
+  INVENTORY_URL
 } from "../../environments/environment";
 
 @Injectable({

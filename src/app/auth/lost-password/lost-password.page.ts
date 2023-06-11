@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
@@ -8,12 +8,9 @@ import { AuthService } from '../auth.service';
   templateUrl: './lost-password.page.html',
   styleUrls: ['./lost-password.page.scss'],
 })
-export class LostPasswordPage implements OnInit {
+export class LostPasswordPage {
 
   constructor(private  authService:  AuthService, private alertController: AlertController, private  router:  Router) { }
-
-  ngOnInit() {
-  }
 
   async LostPassword(form){
     await this.authService.resetPassword(form.value).subscribe({
