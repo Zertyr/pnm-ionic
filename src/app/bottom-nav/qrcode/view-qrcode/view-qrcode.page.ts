@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BoxService } from 'src/app/services/box.service';
 import html2canvas from 'html2canvas';
@@ -10,7 +10,7 @@ import {
   templateUrl: './view-qrcode.page.html',
   styleUrls: ['./view-qrcode.page.scss'],
 })
-export class ViewQrcodePage implements OnInit {
+export class ViewQrcodePage {
 
   label: string;
   delicate: number;
@@ -18,9 +18,6 @@ export class ViewQrcodePage implements OnInit {
   myAngularxQrCode: any;
   constructor(private router: Router, private route: ActivatedRoute, private boxService: BoxService) { }
 
-   ngOnInit() {
-
-  }
 
   /**
    * permet qu'a chaque fois qu'on arrive sur la vue on récupère bien le contenu du carton qu'on souhaite affiché
@@ -59,9 +56,9 @@ export class ViewQrcodePage implements OnInit {
    * finalement être partagé
    */
   share(){
-    var node = document.getElementById('qrcode');
+    let node = document.getElementById('qrcode');
     // console.log('node',node);
-    var dataUrl;
+    let dataUrl;
     html2canvas(node).then(canvas => {
       // console.log('canvas',canvas); 
       dataUrl = canvas.toDataURL('image/png', 1);

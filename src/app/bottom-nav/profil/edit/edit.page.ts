@@ -1,12 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
 import { AlertController } from '@ionic/angular';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
-import { User, UserInfo } from 'src/app/auth/user';
 import { ProfilService } from 'src/app/services/profil.service';
 import { environment } from 'src/environments/environment';
 

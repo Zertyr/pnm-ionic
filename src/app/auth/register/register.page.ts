@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AlertController } from '@ionic/angular';
@@ -8,21 +8,16 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage {
 
   constructor(private  authService:  AuthService, private  router:  Router, private alertController: AlertController) { }
 
-  ngOnInit() {
-  }
-  
   async register(form) {
       this.authService.register(form.value)
       .subscribe({
         next: (value: any) => {
           console.log('res');
           console.log(value);
-
-
          },
         error: async (error: any) => { 
           const alert = await this.alertController.create({

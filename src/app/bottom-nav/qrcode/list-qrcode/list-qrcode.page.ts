@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BoxService } from 'src/app/services/box.service';
 import { TabsService } from 'src/app/services/tabs.service';
