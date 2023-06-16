@@ -13,6 +13,8 @@ export class RegisterPage {
   constructor(private  authService:  AuthService, private  router:  Router, private alertController: AlertController) { }
 
   async register(form) {
+    if(form.rules){
+
       this.authService.register(form.value)
       .subscribe({
         next: (value: any) => {
@@ -41,5 +43,15 @@ export class RegisterPage {
           this.router.navigateByUrl('login');
         }
       });
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Vous devez accepter les termes et conditions ',
+        buttons: ['OK'],
+        cssClass: 'modalMessage'
+      });
+  
+      return alert.present();
+    }
   }
 }

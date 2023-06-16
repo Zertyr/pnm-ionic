@@ -31,6 +31,10 @@
             <ion-item>
               <ion-input name="confirm" type="password" placeholder="Mot de passe encore" ngModel required></ion-input>
             </ion-item>
+            <br>
+
+              <ion-checkbox name="rules"  required></ion-checkbox> <label for=""> Vous acceptez les termes et conditions</label>
+
           </div>
           <div padding>
             <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">S'inscrire</ion-button>
