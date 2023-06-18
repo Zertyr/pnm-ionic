@@ -31,9 +31,11 @@
             <ion-item>
               <ion-input name="confirm" type="password" placeholder="Mot de passe encore" ngModel required></ion-input>
             </ion-item>
-            <br>
+            <ion-item>
+              <ion-label>Vous acceptez les termes et conditions</ion-label>
+              <ion-checkbox slot="end" checked="false" [(ngModel)]="checking" name="checking" onchange="changeChecking()"></ion-checkbox>
 
-              <ion-checkbox name="rules"  required></ion-checkbox> <label for=""> Vous acceptez les termes et conditions</label>
+            </ion-item>
 
           </div>
           <div padding>
