@@ -10,10 +10,12 @@ import { AlertController } from '@ionic/angular';
 })
 export class RegisterPage {
 
+  checking = false;
   constructor(private  authService:  AuthService, private  router:  Router, private alertController: AlertController) { }
 
   async register(form) {
-    if(form.rules){
+    console.log('box',this.checking)
+    if(this.checking === true){
 
       this.authService.register(form.value)
       .subscribe({
@@ -53,5 +55,9 @@ export class RegisterPage {
   
       return alert.present();
     }
+  }
+
+  changeChecking(){
+    this.checking = !this.checking;
   }
 }

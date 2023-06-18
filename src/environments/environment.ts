@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  uriAPI: ' http://192.168.1.22:8000/api',
+  uriAPI: ' http://3.238.238.88/api',
   YOUR_API_KEY: 'YOUR_API_KEY'
 };
 

@@ -15,12 +15,13 @@ export class ListQrcodePage implements OnInit {
   boxList: any;
 
   ngOnInit() {
-    this.getAllBox();
   }
 
   ionViewWillEnter(){
     this.tabService.setShowTopBar(true);
+    this.getAllBox();
   }
+
 
   ionViewWillLeave(){
     this.tabService.setShowTopBar(false);
