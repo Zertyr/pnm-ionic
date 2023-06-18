@@ -43,7 +43,11 @@ lng:any;
     
       console.log('location : ',location);
       this.lat = coordinates.coords.latitude;
+      console.log('this.lat : ',this.lat);
+
       this.lng = coordinates.coords.longitude;
+      console.log('this.lng : ',this.lng);
+
       map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {lat: coordinates.coords.latitude, lng: coordinates.coords.longitude},
         zoom: 15
@@ -77,6 +81,17 @@ lng:any;
           await this.createMarker(marketObj);
         }
       )});
+
+      let marker = new google.maps.Marker({
+        map: map,
+        position: {lat:this.lat,lng:this.lng},
+        title: "Votre position"
+      });
+    
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent("Votre position");
+        infowindow.open(map, this);
+      });
   }
 
 
