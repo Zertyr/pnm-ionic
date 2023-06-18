@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
 import { HttpClient } from '@angular/common/http';
 import { CapacitorHttp } from '@capacitor/core';
 import { environment } from 'src/environments/environment';
 
 
-declare var google;
+declare let google;
 let map: any;
 let infowindow: any;
 let options = {
@@ -50,11 +50,11 @@ lng:any;
       });
   
       infowindow = new google.maps.InfoWindow();
-      var config = {
+      let config = {
         url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+ this.lat +'%2C'+ this.lng +'&radius=1500&type=car_rental&keyword=car_rental&key='+environment.YOUR_API_KEY,
         headers: { }
       };
-      let result2 = await CapacitorHttp.get(config)
+      await CapacitorHttp.get(config)
       .then(res => {
         res.data.results.forEach(element => {
           if (element.status === google.maps.places.PlacesServiceStatus.OK) {
@@ -74,22 +74,16 @@ lng:any;
               lng: element.geometry.location.lng
             }
           };
-          //console.log(marketObj);
           await this.createMarker(marketObj);
         }
       )});
-
-    // var myplace = new google.maps.Marker({
-    //   map: map,
-    //   position: {lat: this.lat, lng: this.lng}
-    // });
   }
 
 
   createMarker(place) {
     
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
+    let placeLoc = place.geometry.location;
+    let marker = new google.maps.Marker({
       map: map,
       position: {lat:place.geometry.location.lat,lng:place.geometry.location.lng},
       title: place.name

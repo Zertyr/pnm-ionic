@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User, UserInfo } from '../auth/user';
+import { UserInfo } from '../auth/user';
 
 @Injectable({
   providedIn: 'root'

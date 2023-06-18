@@ -13,7 +13,7 @@
   Partage
 </ion-button>
   <div  class="qrCode" id='qrcode'>
-    <qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
+    <qrcode class="qrCodeDiv" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
     <h4 class="toto">
       <ion-icon slot="start" name="wine-outline" *ngIf="this.delicate == 1"></ion-icon> <span *ngIf="this.delicate == 1"> FRAGILE </span> <ion-icon slot="start" name="wine-outline" *ngIf="this.delicate == 1"></ion-icon>
       <br>

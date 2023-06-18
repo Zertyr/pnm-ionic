@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {User} from "../auth/user";
 import {Preferences} from "@capacitor/preferences";
-import {environment, INVENTORY_URL, ITEM_URL, LAST_ITEM_URL} from "../../environments/environment";
+import {environment, ITEM_URL} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'

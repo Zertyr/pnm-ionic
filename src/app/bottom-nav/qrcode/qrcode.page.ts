@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { TabsService } from 'src/app/services/tabs.service';
 
@@ -8,7 +8,7 @@ import { TabsService } from 'src/app/services/tabs.service';
   styleUrls: ['qrcode.page.scss']
 })
 
-export class QrCodePage implements OnInit, OnDestroy {
+export class QrCodePage {
 
   //visibility of the button scanner
   scannerButton: boolean = true;
@@ -24,7 +24,7 @@ export class QrCodePage implements OnInit, OnDestroy {
 
   async askUser() {
     this.prepare();
-    const c = confirm('Do you want to scan a barcode?');
+    const c = confirm('Voulez-vous scanner un QrCode ?');
 
     if (c) {
       await this.didUserGrantPermission().then(res => {
@@ -49,7 +49,7 @@ export class QrCodePage implements OnInit, OnDestroy {
     if (status.denied) {
       // the user denied permission for good
       // redirect user to app settings if they want to grant it anyway
-      const c = confirm('If you want to grant permission for using your camera, enable it in the app settings.');
+      const c = confirm('Si vous souhaitez donner l\'autorisation d\'utiliser la camera, activer la dans les options de l\'application.');
       if (c) {
         BarcodeScanner.openAppSettings();
       }
@@ -64,7 +64,7 @@ export class QrCodePage implements OnInit, OnDestroy {
       // user has not been requested this permission before
       // it is advised to show the user some sort of prompt
       // this way you will not waste your only chance to ask for the permission
-      const c = confirm('We need your permission to use your camera to be able to scan barcodes');
+      const c = confirm('Nous avons besoin de votre autorisation pour utilser camera afin de scanner des QrCode');
       if (!c) {
         return false;
       }
@@ -129,15 +129,11 @@ export class QrCodePage implements OnInit, OnDestroy {
 
     BarcodeScanner.stopScan();
   };
-  ngOnInit() {
-  }
 
   ionViewWillEnter(){
     this.tabService.setShowTopBar(true);
   }
-  ngOnDestroy(): void {
 
-  }
   ionViewWillLeave() {
     this.stopScan();
     this.tabService.setShowTopBar(false);

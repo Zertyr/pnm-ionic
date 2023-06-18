@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanLoad, Router } from '@angular/router';
 import { Preferences  } from '@capacitor/preferences';
 
 export const INTRO_KEY = 'intro-scene';
