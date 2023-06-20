@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-button (click)="goToListBox()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+</ion-header>
+
+<ion-content>
+  <ion-button
+  (click)="share()"
+  expand="block"
+  class="ion-margin"
+>
+  Partage
+</ion-button>
+  <div  class="qrCode" id='qrcode'>
+    <qrcode class="qrCodeDiv" [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'" [allowEmptyString]="true"></qrcode>
+    <h4 class="toto">
+      <ion-icon slot="start" name="wine-outline" *ngIf="this.delicate == 1"></ion-icon> <span *ngIf="this.delicate == 1"> FRAGILE </span> <ion-icon slot="start" name="wine-outline" *ngIf="this.delicate == 1"></ion-icon>
+      <br>
+      {{label}}
+    </h4>
+  </div>
+  <ion-grid>
+
+    <ion-row class="borderBottom">
+      <ion-col>Nom</ion-col>
+      <ion-col>Quantité</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of itemsBox" class="borderBottom">
+      <ion-col>{{item?.itemName}}</ion-col>
+      <ion-col>{{item?.quantity}}</ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 114.0.0.0 (Windows 10)" package="" timestamp="2023-06-10T14:32:40" id="0" hostname="LAPTOP-I4L7B26O" tests="30" errors="0" failures="2" time="1.415">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.033" classname="Chrome_114_0_0_0_(Windows_10).AppComponent"/>
+  <testcase name="ListPage should create" time="0.554" classname="Chrome_114_0_0_0_(Windows_10).ListPage"/>
+  <testcase name="RegisterPage User class tests should have a valid constructor" time="0.082" classname="Chrome_114_0_0_0_(Windows_10).RegisterPage User class tests"/>
+  <testcase name="RegisterPage User class tests should not set name correctly through constructor" time="0.107" classname="Chrome_114_0_0_0_(Windows_10).RegisterPage User class tests">
+    <failure type="">Error: Expected 'Colin' to equal 'Damien'.
+    at &lt;Jasmine&gt;
+    at UserContext.apply (src/app/auth/register/register.page.spec.ts:46:25)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:409:30)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:303:43)
+</failure>
+  </testcase>
+  <testcase name="RegisterPage User class tests should set name correctly through constructor" time="0.043" classname="Chrome_114_0_0_0_(Windows_10).RegisterPage User class tests"/>
+  <testcase name="RegisterPage should create" time="0.045" classname="Chrome_114_0_0_0_(Windows_10).RegisterPage"/>
+  <testcase name="VehiclesService should be created" time="0.004" classname="Chrome_114_0_0_0_(Windows_10).VehiclesService"/>
+  <testcase name="LostPasswordPage should create" time="0.043" classname="Chrome_114_0_0_0_(Windows_10).LostPasswordPage"/>
+  <testcase name="VehicleInformationsPage should create" time="0.047" classname="Chrome_114_0_0_0_(Windows_10).VehicleInformationsPage"/>
+  <testcase name="BoxService should be created" time="0.004" classname="Chrome_114_0_0_0_(Windows_10).BoxService"/>
+  <testcase name="InventoryServicesService should be created" time="0.003" classname="Chrome_114_0_0_0_(Windows_10).InventoryServicesService"/>
+  <testcase name="ItemBoxService should be created" time="0.004" classname="Chrome_114_0_0_0_(Windows_10).ItemBoxService"/>
+  <testcase name="LocationPage should create" time="0.049" classname="Chrome_114_0_0_0_(Windows_10).LocationPage"/>
+  <testcase name="AuthGuard should be created" time="0.003" classname="Chrome_114_0_0_0_(Windows_10).AuthGuard"/>
+  <testcase name="AutoLoginGuard should be created" time="0.003" classname="Chrome_114_0_0_0_(Windows_10).AutoLoginGuard"/>
+  <testcase name="ListboxPage should create" time="0.052" classname="Chrome_114_0_0_0_(Windows_10).ListboxPage"/>
+  <testcase name="QrCodePage should create" time="0.044" classname="Chrome_114_0_0_0_(Windows_10).QrCodePage"/>
+  <testcase name="IntroGuard should be created" time="0.007" classname="Chrome_114_0_0_0_(Windows_10).IntroGuard"/>
+  <testcase name="IntroPage should create" time="0.063" classname="Chrome_114_0_0_0_(Windows_10).IntroPage"/>
+  <testcase name="AuthService should be created" time="0.002" classname="Chrome_114_0_0_0_(Windows_10).AuthService"/>
+  <testcase name="ViewQrcodePage should create" time="0.009" classname="Chrome_114_0_0_0_(Windows_10).ViewQrcodePage"/>
+  <testcase name="TabsPage should create" time="0.009" classname="Chrome_114_0_0_0_(Windows_10).TabsPage"/>
+  <testcase name="ExploreContainerComponent should create" time="0.041" classname="Chrome_114_0_0_0_(Windows_10).ExploreContainerComponent"/>
+  <testcase name="LoginPage should create" time="0.043" classname="Chrome_114_0_0_0_(Windows_10).LoginPage"/>
+  <testcase name="ItemService should be created" time="0.002" classname="Chrome_114_0_0_0_(Windows_10).ItemService"/>
+  <testcase name="EditPage should create" time="0.062" classname="Chrome_114_0_0_0_(Windows_10).EditPage"/>
+  <testcase name="ProfilPage should create" time="0.042" classname="Chrome_114_0_0_0_(Windows_10).ProfilPage"/>
+  <testcase name="ListQrcodePage should create" time="0.01" classname="Chrome_114_0_0_0_(Windows_10).ListQrcodePage">
+    <failure type="">Failed: Uncaught (in promise): TypeError: Cannot read properties of undefined (reading 'toPromise')
+TypeError: Cannot read properties of undefined (reading 'toPromise')
+    at ListQrcodePage.&lt;anonymous&gt; (src/app/bottom-nav/qrcode/list-qrcode/list-qrcode.page.ts:30:63)
+    at Generator.next (&lt;anonymous&gt;)
+    at apply (node_modules/tslib/tslib.es6.js:118:43)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:409:30)
+    at AsyncTestZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:1288:47)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:300:43)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:408:56)
+    at Object.onInvoke (node_modules/@angular/core/fesm2015/core.mjs:26250:33)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:408:56)
+    at Zone.run (node_modules/zone.js/dist/zone.js:169:47)
+error properties: Object({ rejection: TypeError: Cannot read properties of undefined (reading 'toPromise'), promise: [object Promise], zone: Zone({ _parent: Zone({ _parent: Zone({ _parent: Zone({ _parent: null, _name: '&lt;root&gt;', _properties: Object({  }), _zoneDelegate: _ZoneDelegate({ _taskCounts: Object({ microTask: 0, macroTask: 0, eventTask: 0 }), zone: &lt;circular reference: Object&gt;, _parentDelegate: null, _forkZS: null, _forkDlgt: null, _forkCurrZone: null, _interceptZS: null, _interceptDlgt: null, _interceptCurrZone: null, _invokeZS: null, _invokeDlgt: null, _invokeCurrZone: null, _handleErrorZS: null, _handleErrorDlgt: null, _handleErrorCurrZone: null, _scheduleTaskZS: null, _scheduleTaskDlgt: null, _scheduleTaskCurrZone: null, _invokeTaskZS: null, _invokeTaskDlgt: null, _invokeTaskCurrZone: null, _cancelTaskZS: null, _cancelTaskDlgt: null, _cancelTaskCurrZone: null, _hasTaskZS: null, _hasTaskDlgt: null, _hasTaskDlgtOwner: null, _hasTaskCurrZone: null }) }), _name: 'ProxyZone', _properties: Object ...
+Error: Uncaught (in promise): TypeError: Cannot read properties of undefined (reading 'toPromise')
+TypeError: Cannot read properties of undefined (reading 'toPromise')
+    at ListQrcodePage.&lt;anonymous&gt; (src/app/bottom-nav/qrcode/list-qrcode/list-qrcode.page.ts:30:63)
+    at Generator.next (&lt;anonymous&gt;)
+    at apply (node_modules/tslib/tslib.es6.js:118:43)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:409:30)
+    at AsyncTestZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:1288:47)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:300:43)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:408:56)
+    at Object.onInvoke (node_modules/@angular/core/fesm2015/core.mjs:26250:33)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:408:56)
+    at Zone.run (node_modules/zone.js/dist/zone.js:169:47)
+    at resolvePromise (node_modules/zone.js/dist/zone.js:1262:35)
+    at apply (node_modules/zone.js/dist/zone.js:1169:21)
+    at node_modules/zone.js/dist/zone.js:1185:37
+    at apply (node_modules/tslib/tslib.es6.js:118:86)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:409:30)
+    at AsyncTestZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:1288:47)
+    at ProxyZoneSpec.onInvoke (node_modules/zone.js/dist/zone-testing.js:300:43)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:408:56)
+    at Object.onInvoke (node_modules/@angular/core/fesm2015/core.mjs:26250:33)
+    at _ZoneDelegate.invoke (node_modules/zone.js/dist/zone.js:408:56)
+    at ____________________Elapsed_3_ms__At__Sat_Jun_10_2023_16_32_41_GMT_0200__heure_d__t__d_Europe_centrale_ (http://localhost)
+    at Object.onScheduleTask (node_modules/zone.js/dist/zone-testing.js:120:26)
+    at _ZoneDelegate.scheduleTask (node_modules/zone.js/dist/zone.js:423:55)
+    at Object.onScheduleTask (node_modules/zone.js/dist/zone.js:320:84)
+    at _ZoneDelegate.scheduleTask (node_modules/zone.js/dist/zone.js:423:55)
+    at Zone.scheduleTask (node_modules/zone.js/dist/zone.js:257:47)
+    at Zone.scheduleMicroTask (node_modules/zone.js/dist/zone.js:277:29)
+    at scheduleResolveOrReject (node_modules/zone.js/dist/zone.js:1316:18)
+    at ZoneAwarePromise.then (node_modules/zone.js/dist/zone.js:1527:21)
+</failure>
+  </testcase>
+  <testcase name="ProfilService should be created" time="0.004" classname="Chrome_114_0_0_0_(Windows_10).ProfilService"/>
+  <testcase name="TabsService should be created" time="0.001" classname="Chrome_114_0_0_0_(Windows_10).TabsService"/>
+  <system-out>
+    <![CDATA[Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'ion-input' (used in the 'ListPage' component template).
+1. If 'ion-input' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'ion-input' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) LOG: 'coucou'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'ngModel' since it isn't a known property of 'ion-input' (used in the 'ListboxPage' component template).
+1. If 'ion-input' is an Angular component and it has the 'ngModel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. If 'ion-input' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@NgModule.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) LOG: 'ID : undefined'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0304: 'qrcode' is not a known element (used in the 'QrCodePage' component template):
+1. If 'qrcode' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any element add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'qrdata' since it isn't a known property of 'qrcode' (used in the 'QrCodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'qrdata' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'width' since it isn't a known property of 'qrcode' (used in the 'QrCodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'width' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'errorCorrectionLevel' since it isn't a known property of 'qrcode' (used in the 'QrCodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'errorCorrectionLevel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0304: 'qrcode' is not a known element (used in the 'ViewQrcodePage' component template):
+1. If 'qrcode' is an Angular component, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any element add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'qrdata' since it isn't a known property of 'qrcode' (used in the 'ViewQrcodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'qrdata' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'width' since it isn't a known property of 'qrcode' (used in the 'ViewQrcodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'width' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'errorCorrectionLevel' since it isn't a known property of 'qrcode' (used in the 'ViewQrcodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'errorCorrectionLevel' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) ERROR: 'NG0303: Can't bind to 'allowEmptyString' since it isn't a known property of 'qrcode' (used in the 'ViewQrcodePage' component template).
+1. If 'qrcode' is an Angular component and it has the 'allowEmptyString' input, then verify that it is a part of an @NgModule where this component is declared.
+2. To allow any property add 'NO_ERRORS_SCHEMA' to the '@NgModule.schemas' of this component.'
+,Chrome 114.0.0.0 (Windows 10) WARN: '
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'
+,Chrome 114.0.0.0 (Windows 10) LOG: 'this.user : null'
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

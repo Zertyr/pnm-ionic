@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button [routerLink]="['/tabs/location']">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let vehicle of vehicles" value="{{vehicle.id}}">
+      <ion-item slot="header" color="light">
+        <ion-label>{{vehicle.label}}</ion-label>
+      </ion-item>
+      <img class="ion-padding" slot="content" src="{{vehicle.image}}" alt="image de véhicule"/>
+      <div class="ion-padding" slot="content">{{vehicle.capacity}}</div>
+      <div class="ion-padding" slot="content">{{vehicle.description}}</div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
